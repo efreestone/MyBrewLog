@@ -46,10 +46,6 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-//    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
-//    }
-    
     // Override point for customization after application launch.
     return YES;
 }
@@ -120,7 +116,9 @@
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     timerVC.alarmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     
+    //if fireDateOne exists, timer one was active when app backgrounded
     if ([userDefaults objectForKey:@"fireDateOne"]) {
+        //Grab timer info from user defaults
         fireDateOne = [userDefaults objectForKey:@"fireDateOne"];
         pauseStartOne = [userDefaults objectForKey:@"pauseStartOne"];
         countdownOne = [userDefaults integerForKey:@"countdownOne"];
@@ -130,14 +128,18 @@
         NSInteger timePlus = timeSince + countdownOne;
         NSLog(@"Time Plus 1 = %ld", (long)timePlus);
         if (timePlus > 0) {
+            //Restart timer from user defaults items
             [timerVC startTimerFromDetails:timePlus withDetails:timerOneDesc];
         } else {
+            //timer has passed, clear defaults of saved timer info
             [userDefaults removeObjectForKey:@"fireDateOne"];
             [userDefaults removeObjectForKey:@"countdownOne"];
             [userDefaults removeObjectForKey:@"pauseStartOne"];
         }
     }
+    //if fireDateTwo exists, timer two was active when app backgrounded
     if ([userDefaults objectForKey:@"fireDateTwo"]) {
+        //Grab timer info from user defaults
         fireDateTwo = [userDefaults objectForKey:@"fireDateTwo"];
         pauseStartTwo = [userDefaults objectForKey:@"pauseStartTwo"];
         countdownTwo = [userDefaults integerForKey:@"countdownTwo"];
@@ -148,53 +150,15 @@
         NSLog(@"Time Plus 2 = %ld", (long)timePlus);
         
         if (timePlus > 0) {
+            //Restart timer from user defaults items
             [timerVC startTimerFromDetails:timePlus withDetails:timerTwoDesc];
         } else {
+            //timer has passed, clear defaults of saved timer info
             [userDefaults removeObjectForKey:@"fireDateTwo"];
             [userDefaults removeObjectForKey:@"countdownTwo"];
             [userDefaults removeObjectForKey:@"pauseStartTwo"];
         }
     }
-    
-    //    if ([fireDateOne timeIntervalSinceNow] < 0.0) {
-    //        NSInteger timeSince = [pauseStartOne timeIntervalSinceNow];
-    //        NSInteger timePlus = timeSince + countdownOne;
-    //        NSLog(@"Time Plus 1 = %ld", (long)timePlus);
-    //        if (timePlus > 0) {
-    //            [timerVC startTimerFromDetails:timePlus withDetails:timerOneDesc];
-    //        } else {
-    //            [userDefaults removeObjectForKey:@"fireDateTwo"];
-    //            [userDefaults removeObjectForKey:@"countdownOne"];
-    //            [userDefaults removeObjectForKey:@"pauseStartOne"];
-    //        }
-    //
-    ////        NSTimeInterval secondsOne = -1 * [pauseStartOne timeIntervalSinceNow];
-    ////        //NSDate *minusDate = [fireDateOne dateByAddingTimeInterval:secondsOne];
-    ////        NSLog(@"Fire Date has NOT passed, seconds = %f", secondsOne);
-    ////
-    ////        NSDate *newFire = [fireDateOne initWithTimeInterval:secondsOne sinceDate:[NSDate date]];
-    ////        double newFireSeconds = -[newFire timeIntervalSinceDate:[NSDate date]] * 86400;
-    ////
-    ////        NSLog(@"Now = %@", [NSDate date]);
-    ////
-    ////        NSLog(@"new fire seconds = %f", newFireSeconds);
-    //    } else {
-    //        NSLog(@"Fire Date has passed");
-    //    }
-    
-    //    if ([fireDateTwo timeIntervalSinceNow] < 0.0) {
-    //        NSInteger timeSince = [pauseStartTwo timeIntervalSinceNow];
-    //        NSInteger timePlus = timeSince + countdownTwo;
-    //        NSLog(@"Time Plus 2 = %ld", (long)timePlus);
-    //
-    //        if (timePlus > 0) {
-    //            [timerVC startTimerFromDetails:timePlus withDetails:timerOneDesc];
-    //        } else {
-    //            [userDefaults removeObjectForKey:@"fireDateTwo"];
-    //            [userDefaults removeObjectForKey:@"countdownTwo"];
-    //            [userDefaults removeObjectForKey:@"pauseStartTwo"];
-    //        }
-    //    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
