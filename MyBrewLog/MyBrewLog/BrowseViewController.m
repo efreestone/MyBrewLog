@@ -228,7 +228,7 @@ typedef enum {
             //[self refreshTable];
             break;
         default:
-            //Set default to descending by date. This is done because removing objects by the current user causes the default to be sorted by username.
+        //Set default to descending by date. This is done because removing objects by the current user causes the default to be sorted by username.
             [newItemQuery orderByDescending:@"updatedByUser"];
             NSLog(@"Sort default");
             break;
