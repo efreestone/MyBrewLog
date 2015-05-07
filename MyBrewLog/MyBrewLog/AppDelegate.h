@@ -12,7 +12,6 @@
 
 #import <UIKit/UIKit.h>
 #import "EventManager.h"
-//#import "TimersViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

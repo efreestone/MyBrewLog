@@ -424,5 +424,4 @@ typedef enum {
 #pragma mark - Navigation
 //didSelectRowAtIndexPath is used instead of prepare for segue
 
-
 @end

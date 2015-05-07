@@ -59,6 +59,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
+    //Check if timers are active and save info to start local notifications and restart timer later
     if (timerVC.firstTimer != nil) {
         //Start local notification for timer
         [timerVC startLocalNotification:timerVC.timerDate withDescription:timerVC.oneDescription];
