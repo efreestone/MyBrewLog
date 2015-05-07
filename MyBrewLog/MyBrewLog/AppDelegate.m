@@ -111,7 +111,7 @@
     
     timerVC = (TimersViewController *)[[tabController viewControllers] objectAtIndex:2];
     
-    // Construct URL to sound file
+    //Construct URL to sound file
     NSString *path = [NSString stringWithFormat:@"%@/bell.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     timerVC.alarmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
@@ -131,7 +131,7 @@
             //Restart timer from user defaults items
             [timerVC startTimerFromDetails:timePlus withDetails:timerOneDesc];
         } else {
-            //timer has passed, clear defaults of saved timer info
+            //timer fire date has passed, clear user defaults of saved timer info
             [userDefaults removeObjectForKey:@"fireDateOne"];
             [userDefaults removeObjectForKey:@"countdownOne"];
             [userDefaults removeObjectForKey:@"pauseStartOne"];
@@ -153,7 +153,7 @@
             //Restart timer from user defaults items
             [timerVC startTimerFromDetails:timePlus withDetails:timerTwoDesc];
         } else {
-            //timer has passed, clear defaults of saved timer info
+            //timer fire date has passed, clear user defaults of saved timer info
             [userDefaults removeObjectForKey:@"fireDateTwo"];
             [userDefaults removeObjectForKey:@"countdownTwo"];
             [userDefaults removeObjectForKey:@"pauseStartTwo"];
