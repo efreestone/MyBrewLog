@@ -61,6 +61,12 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     canEdit = [userDefaults boolForKey:@"Edit"];
     
+    //Check if passedUsername is "none". This is only true when first launching the app and signing in
+    if ([passedUsername isEqualToString:@"none"]) {
+        PFUser *user = [PFUser currentUser];
+        passedUsername = [user objectForKey:@"username"];
+    }
+    
     //Get active bool and set switch accordingly
     isActive = [passedObject valueForKey:@"Active"];
     if (isActive) {

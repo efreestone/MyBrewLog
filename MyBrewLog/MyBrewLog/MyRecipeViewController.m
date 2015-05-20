@@ -68,11 +68,17 @@ typedef enum {
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     timerVC.alarmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     
+    //Set defualt username, otherwise will be null if launching app that hasn't signed in yet.
+    usernameString = @"none";
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //Check edit bool and set to yes if it doesn't exist
-    if ([userDefaults objectForKey:@"Edit"]) {
+    if (![userDefaults objectForKey:@"Edit"]) {
+        NSLog(@"Edit user default set");
         [userDefaults setBool:YES forKey:@"Edit"];
         [userDefaults synchronize];
+    } else {
+        NSLog(@"Edit default exists");
     }
     //Check private bool and set to no if it doesn't exist
     if ([userDefaults objectForKey:@"Private"] == nil) {
@@ -106,7 +112,9 @@ typedef enum {
     
     //Grab user and username
     PFUser *user = [PFUser currentUser];
-    usernameString = [user objectForKey:@"username"];
+    if ([usernameString isEqualToString:@"none"] && [PFUser currentUser]) {
+        usernameString = [user objectForKey:@"username"];
+    }
     
     if ([PFUser currentUser]) {
         //Log username if user is logged in

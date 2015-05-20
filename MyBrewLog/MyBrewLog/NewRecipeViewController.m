@@ -104,6 +104,12 @@
     
     //Check if passedName exists. Only true when editing
     if (passedName != nil) {
+        if ([passedUsername isEqualToString:@"null"]) {
+            NSLog(@"passed username is null");
+        } else {
+            NSLog(@"passed usename = %@", passedUsername);
+        }
+        
         //Set default index and change based on recipe type
         int typeIndex = 2;
         if ([passedType isEqualToString:@"Beer"]) {
@@ -119,7 +125,7 @@
             NSLog(@"Username equals current");
             //Check if recipe is a copy (not from browse)
             if (isCopy) {
-                NSLog(@"is copy");
+                NSLog(@"is copy, passed name = %@", passedName);
                 //Add copy to name of recipe
                 recipeNameTF.text = [NSString stringWithFormat:@"%@ Copy", passedName];
             } else {
@@ -128,6 +134,9 @@
             }
         } else {
             NSLog(@"user = %@", passedUsername);
+//            if ([passedUsername isEqualToString:@"(null)"]) {
+//                NSLog(@"passed username not null");
+//            }
             recipeNameTF.text = [NSString stringWithFormat:@"%@ by %@", passedName, passedUsername];
             browseCopy = YES;
         }
@@ -137,6 +146,7 @@
     } else {
         NSLog(@"Passed Name IS nil");
     }
+    isCopy = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -660,12 +670,14 @@
         NSString *alertString = @"A Recipe Name and some Instructions are required to save. Please add them and try again.";
         [self showRequiredAlert:alertString];
     }
+    isCopy = NO;
 }
 
 //Dismiss new recipe view on cancel
 -(IBAction)onCancel:(id)sender {
     //Dismiss view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+    isCopy = NO;
 }
 
 #pragma mark - Alerts
