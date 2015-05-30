@@ -68,6 +68,14 @@
         twoDescriptionLabel.text = twoDescription;
     }
     
+    //Set pause button titles if no timers active
+    if (firstTimer == nil) {
+        [onePauseButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
+    if (secondTimer == nil) {
+        [twoPauseButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
+    
     //Check permissions for Push
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
@@ -225,23 +233,35 @@
 
 //Paused clicked for timer one
 -(IBAction)pauseClicked:(id)sender {
-    if (!timerPaused) {
-        [self pauseTimer:firstTimer];
-        [onePauseButton setTitle:@"Start" forState:UIControlStateNormal];
-    } else {
-        [self resumeTimer:firstTimer];
+    //Check if timer exists, allow user to create if it doesn't
+    if (firstTimer == nil) {
+        [self showTimerPicker:sender];
         [onePauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+    } else {
+        if (!timerPaused) {
+            [self pauseTimer:firstTimer];
+            [onePauseButton setTitle:@"Start" forState:UIControlStateNormal];
+        } else {
+            [self resumeTimer:firstTimer];
+            [onePauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        }
     }
 }
 
 //Pause clicked for timer two
 -(IBAction)pauseClickedTwo:(id)sender {
-    if (!timerPausedTwo) {
-        [self pauseTimerTwo:secondTimer];
-        [twoPauseButton setTitle:@"Start" forState:UIControlStateNormal];
-    } else {
-        [self resumeTimer:secondTimer];
+    //Check if timer exists, allow user to create if it doesn't
+    if (secondTimer == nil) {
+        [self showTimerPicker:sender];
         [twoPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+    } else {
+        if (!timerPausedTwo) {
+            [self pauseTimerTwo:secondTimer];
+            [twoPauseButton setTitle:@"Start" forState:UIControlStateNormal];
+        } else {
+            [self resumeTimer:secondTimer];
+            [twoPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        }
     }
 }
 

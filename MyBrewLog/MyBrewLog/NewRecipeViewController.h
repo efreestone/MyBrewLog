@@ -17,7 +17,7 @@
 @interface NewRecipeViewController : UIViewController 
 
 -(IBAction)onCancel:(id)sender;
--(IBAction)showIngredientPicker:(id)sender;
+//-(IBAction)showIngredientPicker:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *recipeTypeSegment;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *addItemsSegment;
