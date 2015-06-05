@@ -22,11 +22,6 @@
 #import <Parse/Parse.h>
 
 @interface NewRecipeViewController () <UIActionSheetDelegate, UITextViewDelegate> {
-    NSArray *fruitsArray;
-    NSArray *vegetablesArray;
-    NSArray *grainsAndHopsArray;
-    NSArray *maltsAndSugarsArray;
-    NSArray *yeastArray;
     
     NSArray *recipeTypes;
     NSArray *ingredientArray;
@@ -67,6 +62,7 @@
 @synthesize recipeTypeSegment, addItemsSegment, ingredientButton;
 @synthesize recipeNameTF, ingredientsTV, instructionsTV;
 @synthesize passedName, passedType, passedIngredients, passedInstructions, passedUsername, passedObject, passedObjectID, isCopy;
+@synthesize fruitsArray, vegetablesArray, grainsAndHopsArray, maltsAndSugarsArray, yeastArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,6 +100,8 @@
     grainsAndHopsArray = [NSArray arrayWithObjects:@"Grains & Hops 1", @"Grains & Hops 2", @"Grains & Hops 3", @"Grains & Hops 4", @"Grains & Hops 5", @"Other", nil];
     maltsAndSugarsArray = [NSArray arrayWithObjects:@"Malts & Sugars 1", @"Malts & Sugars 2", @"Malts & Sugars 3", @"Malts & Sugars 4", @"Malts & Sugars 5", @"Malts & Sugars 6", @"Other", nil];
     yeastArray = [NSArray arrayWithObjects:@"Yeast 1", @"Yeast 2", @"Yeast 3", @"Other", nil];
+    
+    //[self saveIngredientsToParse];
     
     //Set default recipe type to Other
     recipeType = @"Other";
@@ -165,6 +163,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)saveIngredientsToParse {
+    PFObject *ingredientsObject = [PFObject objectWithClassName:@"Ingredients"];
+    ingredientsObject[@"fruitsArray"] = fruitsArray;
+    ingredientsObject[@"vegetablesArray"] = vegetablesArray;
+    ingredientsObject[@"grainsAndHopsArray"] = grainsAndHopsArray;
+    ingredientsObject[@"maltsAndSugarsArray"] = maltsAndSugarsArray;
+    ingredientsObject[@"yeastArray"] = yeastArray;
+    
+    [ingredientsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Ingredients saved.");
+            //Dismiss add item view
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self.myRecipeVC refreshTable];
+        } else {
+            NSLog(@"%@", error);
+            //Error alert
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"An error occured trying to save. Please try again.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+        }
+    }];
 }
 
 //Register for notifications from the keyboard
