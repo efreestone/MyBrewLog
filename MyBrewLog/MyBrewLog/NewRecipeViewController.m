@@ -95,12 +95,9 @@
     ingredientArray = [NSArray arrayWithObjects:@"Ingedient 1", @"Ingedient 2", @"Ingedient 3", @"Ingedient 4", @"Ingedient 5", @"Ingedient 6", @"Other", nil];
     
 //    ingredientTypes = [NSArray arrayWithObjects:@"Fruits", @"Vegetables", @"Grains & Hops", @"Malts & Sugars", @"Yeast", @"Other", nil];
-    fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Other", nil];
-    vegetablesArray = [NSArray arrayWithObjects:@"Vegetable 1", @"Vegetable 2", @"Vegetable 3", @"Vegetable 4",  @"Other", nil];
-    grainsAndHopsArray = [NSArray arrayWithObjects:@"Grains & Hops 1", @"Grains & Hops 2", @"Grains & Hops 3", @"Grains & Hops 4", @"Grains & Hops 5", @"Other", nil];
-    maltsAndSugarsArray = [NSArray arrayWithObjects:@"Malts & Sugars 1", @"Malts & Sugars 2", @"Malts & Sugars 3", @"Malts & Sugars 4", @"Malts & Sugars 5", @"Malts & Sugars 6", @"Other", nil];
-    yeastArray = [NSArray arrayWithObjects:@"Yeast 1", @"Yeast 2", @"Yeast 3", @"Other", nil];
     
+    //Set arrays for ingredients pickers
+    [self setIngredientsArrays];
     //[self saveIngredientsToParse];
     
     //Set default recipe type to Other
@@ -185,6 +182,38 @@
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"An error occured trying to save. Please try again.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
         }
     }];
+}
+
+//Set ingredients arrays
+-(void)setIngredientsArrays {
+    //Set default ingredient arrays
+    fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Other", nil];
+    vegetablesArray = [NSArray arrayWithObjects:@"Vegetable 1", @"Vegetable 2", @"Vegetable 3", @"Vegetable 4",  @"Other", nil];
+    grainsAndHopsArray = [NSArray arrayWithObjects:@"Grains & Hops 1", @"Grains & Hops 2", @"Grains & Hops 3", @"Grains & Hops 4", @"Grains & Hops 5", @"Other", nil];
+    maltsAndSugarsArray = [NSArray arrayWithObjects:@"Malts & Sugars 1", @"Malts & Sugars 2", @"Malts & Sugars 3", @"Malts & Sugars 4", @"Malts & Sugars 5", @"Malts & Sugars 6", @"Other", nil];
+    yeastArray = [NSArray arrayWithObjects:@"Yeast 1", @"Yeast 2", @"Yeast 3", @"Other", nil];
+    
+    //Check defaults and grab ingredient arrays if they exist. These will be the updated ones that come from Parse
+    if ([userDefaults objectForKey:@"fruitsArray"]) {
+        fruitsArray = [userDefaults objectForKey:@"fruitsArray"];
+        //NSLog(@"Fruits = %@", fruitsArray);
+    }
+    if ([userDefaults objectForKey:@"vegetablesArray"]) {
+        vegetablesArray = [userDefaults objectForKey:@"vegetablesArray"];
+        //NSLog(@"Veggies = %@", vegetablesArray);
+    }
+    if ([userDefaults objectForKey:@"grainsAndHopsArray"]) {
+        grainsAndHopsArray = [userDefaults objectForKey:@"grainsAndHopsArray"];
+        //NSLog(@"Grains and Hops = %@", grainsAndHopsArray);
+    }
+    if ([userDefaults objectForKey:@"maltsAndSugarsArray"]) {
+        maltsAndSugarsArray = [userDefaults objectForKey:@"maltsAndSugarsArray"];
+        //NSLog(@"Malts and Sugars = %@", maltsAndSugarsArray);
+    }
+    if ([userDefaults objectForKey:@"yeastArray"]) {
+        yeastArray = [userDefaults objectForKey:@"yeastArray"];
+        //NSLog(@"Yeast = %@", yeastArray);
+    }
 }
 
 //Register for notifications from the keyboard

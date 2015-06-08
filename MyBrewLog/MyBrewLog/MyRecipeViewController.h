@@ -23,5 +23,6 @@
 @property (nonatomic, strong) NSMutableArray *recipeSearchResults;
 
 -(void)refreshTable;
+-(void)checkIngredientsForUpdate;
 
 @end

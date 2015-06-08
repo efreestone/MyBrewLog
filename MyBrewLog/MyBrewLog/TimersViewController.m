@@ -224,7 +224,7 @@
     timerPaused = NO;
 }
 
-//Reseume timer two
+//Resume timer two
 -(void)resumeTimerTwo:(NSTimer *)timer {
     float pauseTime = -1 * [pauseStartTwo timeIntervalSinceNow];
     [timer setFireDate:[previousFireDateTwo initWithTimeInterval:pauseTime sinceDate:previousFireDateTwo]];
