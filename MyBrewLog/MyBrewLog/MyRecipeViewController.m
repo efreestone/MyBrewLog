@@ -201,11 +201,11 @@ typedef enum {
     [ingredientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
             if ([objects count] != 0) {
-                NSLog(@"Ingredients objects = %@", objects);
+                //NSLog(@"Ingredients objects = %@", objects);
                 PFObject *ingredientsObject = [objects objectAtIndex:0];
                 NSDate *parseUpdatedAt = [ingredientsObject updatedAt];
                 [userDefaults setObject:parseUpdatedAt forKey:@"updatedAt"];
-                NSLog(@"Parse updated at = %@", parseUpdatedAt);
+                //NSLog(@"Parse updated at = %@", parseUpdatedAt);
                 
                 //Grab arrays and pass to user defaults
                 NSArray *fruitsArray = [ingredientsObject objectForKey:@"fruitsArray"];
@@ -219,13 +219,12 @@ typedef enum {
                 NSArray *yeastArray = [ingredientsObject objectForKey:@"yeastArray"];
                 [userDefaults setObject:yeastArray forKey:@"yeastArray"];
             } else {
-                NSLog(@"Ingredients objects = zero, dates match");
+                NSLog(@"Ingredients objects = zero, dates match or arrays don't exist on Parse");
             }
         } else {
             NSLog(@"Ingedients error");
         }
     }];
-    
 }
 
 //Request access to eventkit for use with calendars
