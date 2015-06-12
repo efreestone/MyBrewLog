@@ -1,0 +1,525 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B88A74561B2A76C50012AADD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B88A74551B2A76C50012AADD /* main.m */; };
+		B88A74591B2A76C50012AADD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B88A74581B2A76C50012AADD /* AppDelegate.m */; };
+		B88A745C1B2A76C50012AADD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88A745B1B2A76C50012AADD /* ViewController.m */; };
+		B88A745F1B2A76C50012AADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B88A745D1B2A76C50012AADD /* Main.storyboard */; };
+		B88A74611B2A76C50012AADD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88A74601B2A76C50012AADD /* Images.xcassets */; };
+		B88A74641B2A76C50012AADD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88A74621B2A76C50012AADD /* LaunchScreen.xib */; };
+		B88A74701B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B88A746F1B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.m */; };
+		B88A74911B2A79E60012AADD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A748B1B2A79E60012AADD /* Bolts.framework */; };
+		B88A74921B2A79E60012AADD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A748C1B2A79E60012AADD /* Parse.framework */; };
+		B88A74931B2A79E60012AADD /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A748D1B2A79E60012AADD /* ParseCrashReporting.framework */; };
+		B88A74941B2A79E60012AADD /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A748E1B2A79E60012AADD /* ParseFacebookUtils.framework */; };
+		B88A74951B2A79E60012AADD /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A748F1B2A79E60012AADD /* ParseFacebookUtilsV4.framework */; };
+		B88A74961B2A79E60012AADD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74901B2A79E60012AADD /* ParseUI.framework */; };
+		B88A74991B2A7CA70012AADD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74981B2A7CA70012AADD /* AudioToolbox.framework */; };
+		B88A749B1B2A7CAD0012AADD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A749A1B2A7CAD0012AADD /* CFNetwork.framework */; };
+		B88A749D1B2A7CBE0012AADD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A749C1B2A7CBE0012AADD /* CoreGraphics.framework */; };
+		B88A749F1B2A7CC70012AADD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A749E1B2A7CC70012AADD /* CoreLocation.framework */; };
+		B88A74A11B2A7CDA0012AADD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74A01B2A7CDA0012AADD /* MobileCoreServices.framework */; };
+		B88A74A31B2A7CE00012AADD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74A21B2A7CE00012AADD /* QuartzCore.framework */; };
+		B88A74A51B2A7CEE0012AADD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74A41B2A7CEE0012AADD /* Security.framework */; };
+		B88A74A71B2A7CF80012AADD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74A61B2A7CF80012AADD /* StoreKit.framework */; };
+		B88A74A91B2A7D0C0012AADD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74A81B2A7D0C0012AADD /* SystemConfiguration.framework */; };
+		B88A74AB1B2A7D150012AADD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74AA1B2A7D150012AADD /* libz.dylib */; };
+		B88A74AD1B2A7D230012AADD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74AC1B2A7D230012AADD /* libsqlite3.dylib */; };
+		B88A74AF1B2A7D300012AADD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74AE1B2A7D300012AADD /* Social.framework */; };
+		B88A74B11B2A7D3D0012AADD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A74B01B2A7D3D0012AADD /* Accounts.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B88A746A1B2A76C60012AADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B88A74481B2A76C50012AADD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B88A744F1B2A76C50012AADD;
+			remoteInfo = MyBrewLogIngredientsUpdate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B88A74501B2A76C50012AADD /* MyBrewLogIngredientsUpdate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBrewLogIngredientsUpdate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88A74541B2A76C50012AADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B88A74551B2A76C50012AADD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B88A74571B2A76C50012AADD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B88A74581B2A76C50012AADD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B88A745A1B2A76C50012AADD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B88A745B1B2A76C50012AADD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B88A745E1B2A76C50012AADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B88A74601B2A76C50012AADD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B88A74631B2A76C50012AADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B88A74691B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBrewLogIngredientsUpdateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88A746E1B2A76C60012AADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B88A746F1B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBrewLogIngredientsUpdateTests.m; sourceTree = "<group>"; };
+		B88A748B1B2A79E60012AADD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Frameworks/Bolts.framework; sourceTree = "<group>"; };
+		B88A748C1B2A79E60012AADD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
+		B88A748D1B2A79E60012AADD /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		B88A748E1B2A79E60012AADD /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = Frameworks/ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		B88A748F1B2A79E60012AADD /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = Frameworks/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		B88A74901B2A79E60012AADD /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Frameworks/ParseUI.framework; sourceTree = "<group>"; };
+		B88A74981B2A7CA70012AADD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B88A749A1B2A7CAD0012AADD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B88A749C1B2A7CBE0012AADD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B88A749E1B2A7CC70012AADD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B88A74A01B2A7CDA0012AADD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B88A74A21B2A7CE00012AADD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B88A74A41B2A7CEE0012AADD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B88A74A61B2A7CF80012AADD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B88A74A81B2A7D0C0012AADD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B88A74AA1B2A7D150012AADD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B88A74AC1B2A7D230012AADD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B88A74AE1B2A7D300012AADD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		B88A74B01B2A7D3D0012AADD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B88A744D1B2A76C50012AADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A74B11B2A7D3D0012AADD /* Accounts.framework in Frameworks */,
+				B88A74AF1B2A7D300012AADD /* Social.framework in Frameworks */,
+				B88A74AD1B2A7D230012AADD /* libsqlite3.dylib in Frameworks */,
+				B88A74AB1B2A7D150012AADD /* libz.dylib in Frameworks */,
+				B88A74A91B2A7D0C0012AADD /* SystemConfiguration.framework in Frameworks */,
+				B88A74A71B2A7CF80012AADD /* StoreKit.framework in Frameworks */,
+				B88A74A51B2A7CEE0012AADD /* Security.framework in Frameworks */,
+				B88A74A31B2A7CE00012AADD /* QuartzCore.framework in Frameworks */,
+				B88A74A11B2A7CDA0012AADD /* MobileCoreServices.framework in Frameworks */,
+				B88A749F1B2A7CC70012AADD /* CoreLocation.framework in Frameworks */,
+				B88A749D1B2A7CBE0012AADD /* CoreGraphics.framework in Frameworks */,
+				B88A749B1B2A7CAD0012AADD /* CFNetwork.framework in Frameworks */,
+				B88A74991B2A7CA70012AADD /* AudioToolbox.framework in Frameworks */,
+				B88A74961B2A79E60012AADD /* ParseUI.framework in Frameworks */,
+				B88A74921B2A79E60012AADD /* Parse.framework in Frameworks */,
+				B88A74931B2A79E60012AADD /* ParseCrashReporting.framework in Frameworks */,
+				B88A74941B2A79E60012AADD /* ParseFacebookUtils.framework in Frameworks */,
+				B88A74911B2A79E60012AADD /* Bolts.framework in Frameworks */,
+				B88A74951B2A79E60012AADD /* ParseFacebookUtilsV4.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B88A74661B2A76C60012AADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B88A74471B2A76C50012AADD = {
+			isa = PBXGroup;
+			children = (
+				B88A74521B2A76C50012AADD /* MyBrewLogIngredientsUpdate */,
+				B88A746C1B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests */,
+				B88A74511B2A76C50012AADD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B88A74511B2A76C50012AADD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B88A74501B2A76C50012AADD /* MyBrewLogIngredientsUpdate.app */,
+				B88A74691B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B88A74521B2A76C50012AADD /* MyBrewLogIngredientsUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				B88A74971B2A79F80012AADD /* Frameworks */,
+				B88A74571B2A76C50012AADD /* AppDelegate.h */,
+				B88A74581B2A76C50012AADD /* AppDelegate.m */,
+				B88A745A1B2A76C50012AADD /* ViewController.h */,
+				B88A745B1B2A76C50012AADD /* ViewController.m */,
+				B88A745D1B2A76C50012AADD /* Main.storyboard */,
+				B88A74601B2A76C50012AADD /* Images.xcassets */,
+				B88A74621B2A76C50012AADD /* LaunchScreen.xib */,
+				B88A74531B2A76C50012AADD /* Supporting Files */,
+			);
+			path = MyBrewLogIngredientsUpdate;
+			sourceTree = "<group>";
+		};
+		B88A74531B2A76C50012AADD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B88A74541B2A76C50012AADD /* Info.plist */,
+				B88A74551B2A76C50012AADD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B88A746C1B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests */ = {
+			isa = PBXGroup;
+			children = (
+				B88A746F1B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.m */,
+				B88A746D1B2A76C60012AADD /* Supporting Files */,
+			);
+			path = MyBrewLogIngredientsUpdateTests;
+			sourceTree = "<group>";
+		};
+		B88A746D1B2A76C60012AADD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B88A746E1B2A76C60012AADD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B88A74971B2A79F80012AADD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B88A74B01B2A7D3D0012AADD /* Accounts.framework */,
+				B88A74AE1B2A7D300012AADD /* Social.framework */,
+				B88A74AC1B2A7D230012AADD /* libsqlite3.dylib */,
+				B88A74AA1B2A7D150012AADD /* libz.dylib */,
+				B88A74A81B2A7D0C0012AADD /* SystemConfiguration.framework */,
+				B88A74A61B2A7CF80012AADD /* StoreKit.framework */,
+				B88A74A41B2A7CEE0012AADD /* Security.framework */,
+				B88A74A21B2A7CE00012AADD /* QuartzCore.framework */,
+				B88A74A01B2A7CDA0012AADD /* MobileCoreServices.framework */,
+				B88A749E1B2A7CC70012AADD /* CoreLocation.framework */,
+				B88A749C1B2A7CBE0012AADD /* CoreGraphics.framework */,
+				B88A749A1B2A7CAD0012AADD /* CFNetwork.framework */,
+				B88A74981B2A7CA70012AADD /* AudioToolbox.framework */,
+				B88A748B1B2A79E60012AADD /* Bolts.framework */,
+				B88A748C1B2A79E60012AADD /* Parse.framework */,
+				B88A748D1B2A79E60012AADD /* ParseCrashReporting.framework */,
+				B88A748E1B2A79E60012AADD /* ParseFacebookUtils.framework */,
+				B88A748F1B2A79E60012AADD /* ParseFacebookUtilsV4.framework */,
+				B88A74901B2A79E60012AADD /* ParseUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B88A744F1B2A76C50012AADD /* MyBrewLogIngredientsUpdate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B88A74731B2A76C60012AADD /* Build configuration list for PBXNativeTarget "MyBrewLogIngredientsUpdate" */;
+			buildPhases = (
+				B88A744C1B2A76C50012AADD /* Sources */,
+				B88A744D1B2A76C50012AADD /* Frameworks */,
+				B88A744E1B2A76C50012AADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyBrewLogIngredientsUpdate;
+			productName = MyBrewLogIngredientsUpdate;
+			productReference = B88A74501B2A76C50012AADD /* MyBrewLogIngredientsUpdate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B88A74681B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B88A74761B2A76C60012AADD /* Build configuration list for PBXNativeTarget "MyBrewLogIngredientsUpdateTests" */;
+			buildPhases = (
+				B88A74651B2A76C60012AADD /* Sources */,
+				B88A74661B2A76C60012AADD /* Frameworks */,
+				B88A74671B2A76C60012AADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B88A746B1B2A76C60012AADD /* PBXTargetDependency */,
+			);
+			name = MyBrewLogIngredientsUpdateTests;
+			productName = MyBrewLogIngredientsUpdateTests;
+			productReference = B88A74691B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B88A74481B2A76C50012AADD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Elijah Freestone";
+				TargetAttributes = {
+					B88A744F1B2A76C50012AADD = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					B88A74681B2A76C60012AADD = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = B88A744F1B2A76C50012AADD;
+					};
+				};
+			};
+			buildConfigurationList = B88A744B1B2A76C50012AADD /* Build configuration list for PBXProject "MyBrewLogIngredientsUpdate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B88A74471B2A76C50012AADD;
+			productRefGroup = B88A74511B2A76C50012AADD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B88A744F1B2A76C50012AADD /* MyBrewLogIngredientsUpdate */,
+				B88A74681B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B88A744E1B2A76C50012AADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A745F1B2A76C50012AADD /* Main.storyboard in Resources */,
+				B88A74641B2A76C50012AADD /* LaunchScreen.xib in Resources */,
+				B88A74611B2A76C50012AADD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B88A74671B2A76C60012AADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B88A744C1B2A76C50012AADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A745C1B2A76C50012AADD /* ViewController.m in Sources */,
+				B88A74591B2A76C50012AADD /* AppDelegate.m in Sources */,
+				B88A74561B2A76C50012AADD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B88A74651B2A76C60012AADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88A74701B2A76C60012AADD /* MyBrewLogIngredientsUpdateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B88A746B1B2A76C60012AADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B88A744F1B2A76C50012AADD /* MyBrewLogIngredientsUpdate */;
+			targetProxy = B88A746A1B2A76C60012AADD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B88A745D1B2A76C50012AADD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B88A745E1B2A76C50012AADD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B88A74621B2A76C50012AADD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B88A74631B2A76C50012AADD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B88A74711B2A76C60012AADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B88A74721B2A76C60012AADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B88A74741B2A76C60012AADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyBrewLogIngredientsUpdate/Frameworks",
+				);
+				INFOPLIST_FILE = MyBrewLogIngredientsUpdate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B88A74751B2A76C60012AADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyBrewLogIngredientsUpdate/Frameworks",
+				);
+				INFOPLIST_FILE = MyBrewLogIngredientsUpdate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B88A74771B2A76C60012AADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyBrewLogIngredientsUpdateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBrewLogIngredientsUpdate.app/MyBrewLogIngredientsUpdate";
+			};
+			name = Debug;
+		};
+		B88A74781B2A76C60012AADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyBrewLogIngredientsUpdateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBrewLogIngredientsUpdate.app/MyBrewLogIngredientsUpdate";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B88A744B1B2A76C50012AADD /* Build configuration list for PBXProject "MyBrewLogIngredientsUpdate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B88A74711B2A76C60012AADD /* Debug */,
+				B88A74721B2A76C60012AADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B88A74731B2A76C60012AADD /* Build configuration list for PBXNativeTarget "MyBrewLogIngredientsUpdate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B88A74741B2A76C60012AADD /* Debug */,
+				B88A74751B2A76C60012AADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B88A74761B2A76C60012AADD /* Build configuration list for PBXNativeTarget "MyBrewLogIngredientsUpdateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B88A74771B2A76C60012AADD /* Debug */,
+				B88A74781B2A76C60012AADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B88A74481B2A76C50012AADD /* Project object */;
+}

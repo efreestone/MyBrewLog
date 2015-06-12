@@ -57,6 +57,7 @@ typedef enum {
     AppDelegate *appDelegate;
     UIView *noRecipesView;
     UITextField *searchTextField;
+    NSUserDefaults *userDefaults;
 }
 
 - (void)viewDidLoad {
@@ -71,7 +72,7 @@ typedef enum {
     //Set defualt username, otherwise will be null if launching app that hasn't signed in yet.
     usernameString = @"none";
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    userDefaults = [NSUserDefaults standardUserDefaults];
     //Check edit bool and set to yes if it doesn't exist
     if (![userDefaults objectForKey:@"Edit"]) {
         NSLog(@"Edit user default set");
@@ -162,6 +163,8 @@ typedef enum {
     self.tableView.delegate = self;
     
     self.definesPresentationContext = YES;
+    
+    //[self checkIngredientsForUpdate];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -178,6 +181,52 @@ typedef enum {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//Check Ingredient list updatedAt and update if needed
+//This only pulls in the ingredients list from Parse if date does not match between user defaults and Parse. This will allow me to update or expand the recipes lists without having to update the whole app
+-(void)checkIngredientsForUpdate {
+    //Create arrays for ingredients
+//    NSArray *fruitsArray, vegetablesArray, grainsAndHopsArray, maltsAndSugarsArray, yeastArray;
+    //Grab date from user defaults
+    NSDate *updatedAtDefaults = [userDefaults objectForKey:@"updatedAt"];
+    if (updatedAtDefaults == nil) {
+        updatedAtDefaults = [NSDate date];
+        NSLog(@"updatedAt NULL");
+    } else {
+        NSLog(@"updatedAt from defaults = %@", updatedAtDefaults);
+    }
+    PFQuery *ingredientsQuery = [PFQuery queryWithClassName:@"Ingredients"];
+    [ingredientsQuery whereKey:@"updatedAt" notEqualTo:updatedAtDefaults];
+    [ingredientsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            if ([objects count] != 0) {
+                //NSLog(@"Ingredients objects = %@", objects);
+                PFObject *ingredientsObject = [objects objectAtIndex:0];
+                NSDate *parseUpdatedAt = [ingredientsObject updatedAt];
+                [userDefaults setObject:parseUpdatedAt forKey:@"updatedAt"];
+                //NSLog(@"Parse updated at = %@", parseUpdatedAt);
+                
+                //Grab arrays and pass to user defaults
+                NSArray *berriesArray = [ingredientsObject objectForKey:@"berriesArray"];
+                [userDefaults setObject:berriesArray forKey:@"berriesArray"];
+                NSArray *fruitsArray = [ingredientsObject objectForKey:@"fruitsArray"];
+                [userDefaults setObject:fruitsArray forKey:@"fruitsArray"];
+                NSArray *vegetablesArray = [ingredientsObject objectForKey:@"vegetablesArray"];
+                [userDefaults setObject:vegetablesArray forKey:@"vegetablesArray"];
+                NSArray *grainsAndHopsArray = [ingredientsObject objectForKey:@"grainsAndHopsArray"];
+                [userDefaults setObject:grainsAndHopsArray forKey:@"grainsAndHopsArray"];
+                NSArray *maltsAndSugarsArray = [ingredientsObject objectForKey:@"maltsAndSugarsArray"];
+                [userDefaults setObject:maltsAndSugarsArray forKey:@"maltsAndSugarsArray"];
+                NSArray *yeastArray = [ingredientsObject objectForKey:@"yeastArray"];
+                [userDefaults setObject:yeastArray forKey:@"yeastArray"];
+            } else {
+                NSLog(@"Ingredients objects = zero, dates match or arrays don't exist on Parse");
+            }
+        } else {
+            NSLog(@"Ingedients error");
+        }
+    }];
 }
 
 //Request access to eventkit for use with calendars

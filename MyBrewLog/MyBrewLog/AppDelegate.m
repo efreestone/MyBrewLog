@@ -12,11 +12,12 @@
 
 #import "AppDelegate.h"
 #import "TimersViewController.h"
-#import "BrowseViewController.h"
+#import "MyRecipeViewController.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate () {
     TimersViewController *timerVC;
+    MyRecipeViewController *myRecipeVC;
     NSDate *fireDateOne;
     NSDate *fireDateTwo;
     NSDate *pauseStartOne;
@@ -34,6 +35,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"App did finish launching with options");
     userDefaults = [NSUserDefaults standardUserDefaults];
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -107,12 +109,19 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"App did become Active!!");
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     self.eventManager = [[EventManager alloc] init];
     
     UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
     
+    //Get view controllers
     timerVC = (TimersViewController *)[[tabController viewControllers] objectAtIndex:2];
+    //My Recipe has Nav controller so need to get visible view controller
+    myRecipeVC = (MyRecipeViewController *) [[[tabController viewControllers] objectAtIndex:0] visibleViewController];
+    if (myRecipeVC != nil) {
+        [myRecipeVC checkIngredientsForUpdate];
+    }
     
     //Construct URL to sound file
     NSString *path = [NSString stringWithFormat:@"%@/bell.mp3", [[NSBundle mainBundle] resourcePath]];

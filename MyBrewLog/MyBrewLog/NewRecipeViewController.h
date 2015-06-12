@@ -17,7 +17,6 @@
 @interface NewRecipeViewController : UIViewController 
 
 -(IBAction)onCancel:(id)sender;
--(IBAction)showIngredientPicker:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *recipeTypeSegment;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *addItemsSegment;
@@ -37,6 +36,13 @@
 @property (strong, nonatomic) NSString *passedUsername;
 @property (strong, nonatomic) PFObject *passedObject;
 @property (nonatomic) BOOL isCopy;
+
+@property (strong, nonatomic) NSArray *berriesArray;
+@property (strong, nonatomic) NSArray *fruitsArray;
+@property (strong, nonatomic) NSArray *vegetablesArray;
+@property (strong, nonatomic) NSArray *grainsAndHopsArray;
+@property (strong, nonatomic) NSArray *maltsAndSugarsArray;
+@property (strong, nonatomic) NSArray *yeastArray;
 
 -(void)quantityPicked:(NSString *)formattedQuantity;
 -(void)timerPicked: (NSString *)formattedTime;

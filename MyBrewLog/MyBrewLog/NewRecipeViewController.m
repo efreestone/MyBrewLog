@@ -22,6 +22,7 @@
 #import <Parse/Parse.h>
 
 @interface NewRecipeViewController () <UIActionSheetDelegate, UITextViewDelegate> {
+    
     NSArray *recipeTypes;
     NSArray *ingredientArray;
     NSDate *selectedDate;
@@ -61,6 +62,7 @@
 @synthesize recipeTypeSegment, addItemsSegment, ingredientButton;
 @synthesize recipeNameTF, ingredientsTV, instructionsTV;
 @synthesize passedName, passedType, passedIngredients, passedInstructions, passedUsername, passedObject, passedObjectID, isCopy;
+@synthesize berriesArray, fruitsArray, vegetablesArray, grainsAndHopsArray, maltsAndSugarsArray, yeastArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,6 +93,12 @@
     //Create arrays for pickers
     recipeTypes = [NSArray arrayWithObjects:@"Beer", @"Wine", @"Other", nil];
     ingredientArray = [NSArray arrayWithObjects:@"Ingedient 1", @"Ingedient 2", @"Ingedient 3", @"Ingedient 4", @"Ingedient 5", @"Ingedient 6", @"Other", nil];
+    
+//    ingredientTypes = [NSArray arrayWithObjects:@"Fruits", @"Vegetables", @"Grains & Hops", @"Malts & Sugars", @"Yeast", @"Other", nil];
+    
+    //Set arrays for ingredients pickers
+    [self setIngredientsArrays];
+    //[self saveIngredientsToParse];
     
     //Set default recipe type to Other
     recipeType = @"Other";
@@ -152,6 +160,66 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)saveIngredientsToParse {
+    PFObject *ingredientsObject = [PFObject objectWithClassName:@"Ingredients"];
+    ingredientsObject[@"berriesArray"] = berriesArray;
+    ingredientsObject[@"fruitsArray"] = fruitsArray;
+    ingredientsObject[@"vegetablesArray"] = vegetablesArray;
+    ingredientsObject[@"grainsAndHopsArray"] = grainsAndHopsArray;
+    ingredientsObject[@"maltsAndSugarsArray"] = maltsAndSugarsArray;
+    ingredientsObject[@"yeastArray"] = yeastArray;
+    
+    [ingredientsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Ingredients saved.");
+            //Dismiss add item view
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self.myRecipeVC refreshTable];
+        } else {
+            NSLog(@"%@", error);
+            //Error alert
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"An error occured trying to save. Please try again.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+        }
+    }];
+}
+
+//Set ingredients arrays
+-(void)setIngredientsArrays {
+    //Set default ingredient arrays
+    berriesArray = [NSArray arrayWithObjects:@"Berries 1", @"Berries 2", @"Berries 3", @"Berries 4",  @"Other", nil];
+    fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Other", nil];
+    vegetablesArray = [NSArray arrayWithObjects:@"Vegetable 1", @"Vegetable 2", @"Vegetable 3", @"Vegetable 4",  @"Other", nil];
+    grainsAndHopsArray = [NSArray arrayWithObjects:@"Grains & Hops 1", @"Grains & Hops 2", @"Grains & Hops 3", @"Grains & Hops 4", @"Grains & Hops 5", @"Other", nil];
+    maltsAndSugarsArray = [NSArray arrayWithObjects:@"Malts & Sugars 1", @"Malts & Sugars 2", @"Malts & Sugars 3", @"Malts & Sugars 4", @"Malts & Sugars 5", @"Malts & Sugars 6", @"Other", nil];
+    yeastArray = [NSArray arrayWithObjects:@"Yeast 1", @"Yeast 2", @"Yeast 3", @"Other", nil];
+    
+    //Check defaults and grab ingredient arrays if they exist. These will be the updated ones that come from Parse
+    if ([userDefaults objectForKey:@"berriesArray"]) {
+        berriesArray = [userDefaults objectForKey:@"berriesArray"];
+        //NSLog(@"Fruits = %@", fruitsArray);
+    }
+    if ([userDefaults objectForKey:@"fruitsArray"]) {
+        fruitsArray = [userDefaults objectForKey:@"fruitsArray"];
+        //NSLog(@"Fruits = %@", fruitsArray);
+    }
+    if ([userDefaults objectForKey:@"vegetablesArray"]) {
+        vegetablesArray = [userDefaults objectForKey:@"vegetablesArray"];
+        //NSLog(@"Veggies = %@", vegetablesArray);
+    }
+    if ([userDefaults objectForKey:@"grainsAndHopsArray"]) {
+        grainsAndHopsArray = [userDefaults objectForKey:@"grainsAndHopsArray"];
+        //NSLog(@"Grains and Hops = %@", grainsAndHopsArray);
+    }
+    if ([userDefaults objectForKey:@"maltsAndSugarsArray"]) {
+        maltsAndSugarsArray = [userDefaults objectForKey:@"maltsAndSugarsArray"];
+        //NSLog(@"Malts and Sugars = %@", maltsAndSugarsArray);
+    }
+    if ([userDefaults objectForKey:@"yeastArray"]) {
+        yeastArray = [userDefaults objectForKey:@"yeastArray"];
+        //NSLog(@"Yeast = %@", yeastArray);
+    }
 }
 
 //Register for notifications from the keyboard
@@ -262,23 +330,38 @@
 #pragma mark - Pickers and Action Sheets
 //Using ActionSheetPicker, an open source lib. Found at https://github.com/skywinder/ActionSheetPicker-3.0
 
-//Show Ingredients Picker
--(IBAction)showIngredientPicker:(id)sender {
-    //Create picker and fill with Ingredients Array
-    [ActionSheetStringPicker showPickerWithTitle:@"Add Ingredient"
-                                            rows:ingredientArray
-                                initialSelection:0
-                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           NSLog(@"Selected Value: %@", selectedValue);
-                                           //Grab value selected
-                                           [self ingredientSelected:selectedValue fromSender:sender];
-                                       }
-                                     cancelBlock:^(ActionSheetStringPicker *picker) {
-                                         NSLog(@"Block Picker Canceled");
-                                     }
-                                          origin:sender];
-    [self dismissKeyboard];
+//Show Ingredient Type Sheet
+-(IBAction)showIngredientTypeSheet:(id)sender {
+    //Pass (id)sender to be used for launching ActionSheetPicker from reg action sheet
+    //Selection is handled in delegate method, pragma mark around line 600
+    buttonSender = sender;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Ingredient Type"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Berries", @"Fruits", @"Vegetables", @"Grains & Hops", @"Malts & Sugars", @"Yeast", @"Other", nil];
+    //Set tag and show action sheet
+    actionSheet.tag = 100;
+    [actionSheet showInView:self.view];
 }
+
+//Show Ingredients Picker
+//-(IBAction)showIngredientPicker:(id)sender {
+//    //Create picker and fill with Ingredients Array
+//    [ActionSheetStringPicker showPickerWithTitle:@"Ingredient Type"
+//                                            rows:ingredientTypes
+//                                initialSelection:0
+//                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+//                                           NSLog(@"Selected Value: %@", selectedValue);
+//                                           //Grab value selected
+//                                           [self ingredientSelected:selectedValue fromSender:sender];
+//                                       }
+//                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+//                                         NSLog(@"Block Picker Canceled");
+//                                     }
+//                                          origin:sender];
+//    [self dismissKeyboard];
+//}
 
 //Ingredient selected. Will create alertview with textfield if Other selected
 -(void)ingredientSelected:(NSString *)ing fromSender:(id)sender {
@@ -292,10 +375,27 @@
     }
 }
 
+-(void)showIngredientPicker:(NSArray *)contentArray fromSender:(id)sender {
+    //Create picker and fill with Ingredients Array
+    [ActionSheetStringPicker showPickerWithTitle:@"Ingredient"
+                                            rows:contentArray
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           NSLog(@"Selected Value: %@", selectedValue);
+                                           //Grab value selected
+                                           [self ingredientSelected:selectedValue fromSender:sender];
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:sender];
+    [self dismissKeyboard];
+}
+
 //Create and show alert view if Other is selected for ingredient
 -(void)showOtherSelectedAlert:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Other Ingredient"
-                                                    message:@"Please enter your ingredient name"
+                                                    message:@"Please enter your ingredient."
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Save", nil];
@@ -305,6 +405,7 @@
     alert.tag = 5;
 }
 
+//Handle alertview button clicked
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     //Other ingredient is tag 5
     if ([alertView tag] == 5) {
@@ -572,13 +673,53 @@
 
 //Grab action sheet actions via delegate method
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    //Tag 100 is Recipe Type
+    //Tag 100 is Ingredient Type
     if (actionSheet.tag == 100) {
-        recipeType = [actionSheet buttonTitleAtIndex:buttonIndex];
-        NSLog(@"Recipe Type = %@", recipeType);
-    //Tag 200 is first timer (is 24 hours)
+        //NSString *ingredientTypeSelected = [actionSheet buttonTitleAtIndex:buttonIndex];
+        //NSLog(@"Ingredient Type = %@ , index = %ld", ingredientTypeSelected, (long)buttonIndex);
+        switch (buttonIndex) {
+            //Berries
+            case 0:
+                //NSLog(@"Index 0 - Berries");
+                [self showIngredientPicker:berriesArray fromSender:buttonSender];
+                break;
+            //Fruits
+            case 1:
+                //NSLog(@"Index 1 - Fruits");
+                [self showIngredientPicker:fruitsArray fromSender:buttonSender];
+                break;
+            //Vegetables
+            case 2:
+                //NSLog(@"Index 2 - Vegetables");
+                [self showIngredientPicker:vegetablesArray fromSender:buttonSender];
+                break;
+            //Grains & Hops
+            case 3:
+                //NSLog(@"Index 3 - Grains & Hops");
+                [self showIngredientPicker:grainsAndHopsArray fromSender:buttonSender];
+                break;
+            //Malts & Sugars
+            case 4:
+                //NSLog(@"Index 4 - Malts & Sugars");
+                [self showIngredientPicker:maltsAndSugarsArray fromSender:buttonSender];
+                break;
+            //Yeast
+            case 5:
+                //NSLog(@"Index 5 - Yeast");
+                [self showIngredientPicker:yeastArray fromSender:buttonSender];
+                break;
+            //Other
+            case 6:
+                //NSLog(@"Index 6 - Other");
+                [self showOtherSelectedAlert:buttonSender];
+                break;
+            default:
+                //NSLog(@"Default case in ingredient type");
+                break;
+        }
+    //Tag 200 is timer (is 24 hours)
     } else if (actionSheet.tag == 200) {
-        NSLog(@"Timer length");
+        NSLog(@"Timer Action Sheet");
         //Yes or No selected in first timer action sheet
         if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"No"]) {
             //Under 24 selected, show countdown picker
@@ -591,7 +732,6 @@
         } else {
             NSLog(@"Button title is NOT yes or no");
         }
-        
     } else {
         NSLog(@"Something else selected");
     }
