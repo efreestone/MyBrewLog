@@ -37,6 +37,7 @@
 @property (strong, nonatomic) PFObject *passedObject;
 @property (nonatomic) BOOL isCopy;
 
+@property (strong, nonatomic) NSArray *berriesArray;
 @property (strong, nonatomic) NSArray *fruitsArray;
 @property (strong, nonatomic) NSArray *vegetablesArray;
 @property (strong, nonatomic) NSArray *grainsAndHopsArray;

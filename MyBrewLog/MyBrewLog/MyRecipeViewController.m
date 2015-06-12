@@ -208,6 +208,8 @@ typedef enum {
                 //NSLog(@"Parse updated at = %@", parseUpdatedAt);
                 
                 //Grab arrays and pass to user defaults
+                NSArray *berriesArray = [ingredientsObject objectForKey:@"berriesArray"];
+                [userDefaults setObject:berriesArray forKey:@"berriesArray"];
                 NSArray *fruitsArray = [ingredientsObject objectForKey:@"fruitsArray"];
                 [userDefaults setObject:fruitsArray forKey:@"fruitsArray"];
                 NSArray *vegetablesArray = [ingredientsObject objectForKey:@"vegetablesArray"];

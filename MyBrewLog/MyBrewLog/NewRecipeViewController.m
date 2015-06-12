@@ -62,7 +62,7 @@
 @synthesize recipeTypeSegment, addItemsSegment, ingredientButton;
 @synthesize recipeNameTF, ingredientsTV, instructionsTV;
 @synthesize passedName, passedType, passedIngredients, passedInstructions, passedUsername, passedObject, passedObjectID, isCopy;
-@synthesize fruitsArray, vegetablesArray, grainsAndHopsArray, maltsAndSugarsArray, yeastArray;
+@synthesize berriesArray, fruitsArray, vegetablesArray, grainsAndHopsArray, maltsAndSugarsArray, yeastArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -164,6 +164,7 @@
 
 -(void)saveIngredientsToParse {
     PFObject *ingredientsObject = [PFObject objectWithClassName:@"Ingredients"];
+    ingredientsObject[@"berriesArray"] = berriesArray;
     ingredientsObject[@"fruitsArray"] = fruitsArray;
     ingredientsObject[@"vegetablesArray"] = vegetablesArray;
     ingredientsObject[@"grainsAndHopsArray"] = grainsAndHopsArray;
@@ -187,6 +188,7 @@
 //Set ingredients arrays
 -(void)setIngredientsArrays {
     //Set default ingredient arrays
+    berriesArray = [NSArray arrayWithObjects:@"Berries 1", @"Berries 2", @"Berries 3", @"Berries 4",  @"Other", nil];
     fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Other", nil];
     vegetablesArray = [NSArray arrayWithObjects:@"Vegetable 1", @"Vegetable 2", @"Vegetable 3", @"Vegetable 4",  @"Other", nil];
     grainsAndHopsArray = [NSArray arrayWithObjects:@"Grains & Hops 1", @"Grains & Hops 2", @"Grains & Hops 3", @"Grains & Hops 4", @"Grains & Hops 5", @"Other", nil];
@@ -194,6 +196,10 @@
     yeastArray = [NSArray arrayWithObjects:@"Yeast 1", @"Yeast 2", @"Yeast 3", @"Other", nil];
     
     //Check defaults and grab ingredient arrays if they exist. These will be the updated ones that come from Parse
+    if ([userDefaults objectForKey:@"berriesArray"]) {
+        berriesArray = [userDefaults objectForKey:@"berriesArray"];
+        //NSLog(@"Fruits = %@", fruitsArray);
+    }
     if ([userDefaults objectForKey:@"fruitsArray"]) {
         fruitsArray = [userDefaults objectForKey:@"fruitsArray"];
         //NSLog(@"Fruits = %@", fruitsArray);
@@ -333,7 +339,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Fruits", @"Vegetables", @"Grains & Hops", @"Malts & Sugars", @"Yeast", @"Other", nil];
+                                                    otherButtonTitles:@"Berries", @"Fruits", @"Vegetables", @"Grains & Hops", @"Malts & Sugars", @"Yeast", @"Other", nil];
     //Set tag and show action sheet
     actionSheet.tag = 100;
     [actionSheet showInView:self.view];
@@ -385,16 +391,6 @@
                                           origin:sender];
     [self dismissKeyboard];
 }
-
-//Fruits
-
-//Vegetables
-
-//Grains & Hops
-
-//Malts & Sugars
-
-//Yeast
 
 //Create and show alert view if Other is selected for ingredient
 -(void)showOtherSelectedAlert:(id)sender {
@@ -682,34 +678,39 @@
         //NSString *ingredientTypeSelected = [actionSheet buttonTitleAtIndex:buttonIndex];
         //NSLog(@"Ingredient Type = %@ , index = %ld", ingredientTypeSelected, (long)buttonIndex);
         switch (buttonIndex) {
-            //Fruits
+            //Berries
             case 0:
-                //NSLog(@"Index 0 - Fruits");
+                //NSLog(@"Index 0 - Berries");
+                [self showIngredientPicker:berriesArray fromSender:buttonSender];
+                break;
+            //Fruits
+            case 1:
+                //NSLog(@"Index 1 - Fruits");
                 [self showIngredientPicker:fruitsArray fromSender:buttonSender];
                 break;
             //Vegetables
-            case 1:
-                //NSLog(@"Index 1 - Vegetables");
+            case 2:
+                //NSLog(@"Index 2 - Vegetables");
                 [self showIngredientPicker:vegetablesArray fromSender:buttonSender];
                 break;
             //Grains & Hops
-            case 2:
-                //NSLog(@"Index 2 - Grains & Hops");
+            case 3:
+                //NSLog(@"Index 3 - Grains & Hops");
                 [self showIngredientPicker:grainsAndHopsArray fromSender:buttonSender];
                 break;
             //Malts & Sugars
-            case 3:
-                //NSLog(@"Index 3 - Malts & Sugars");
+            case 4:
+                //NSLog(@"Index 4 - Malts & Sugars");
                 [self showIngredientPicker:maltsAndSugarsArray fromSender:buttonSender];
                 break;
             //Yeast
-            case 4:
-                //NSLog(@"Index 4 - Yeast");
+            case 5:
+                //NSLog(@"Index 5 - Yeast");
                 [self showIngredientPicker:yeastArray fromSender:buttonSender];
                 break;
             //Other
-            case 5:
-                //NSLog(@"Index 5 - Other");
+            case 6:
+                //NSLog(@"Index 6 - Other");
                 [self showOtherSelectedAlert:buttonSender];
                 break;
             default:
