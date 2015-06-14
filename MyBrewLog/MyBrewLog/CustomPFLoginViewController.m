@@ -11,8 +11,11 @@
 //
 
 #import "CustomPFLoginViewController.h"
+#import "MyRecipeViewController.h"
 
-@interface CustomPFLoginViewController ()
+@interface CustomPFLoginViewController () {
+    MyRecipeViewController *myRecipeVC;
+}
 
 @end
 
@@ -32,6 +35,12 @@
     [logoImage setContentMode:UIViewContentModeScaleAspectFill];
     [logoImage setFrame:CGRectMake(0,0,self.logInView.logo.frame.size.width,self.logInView.logo.frame.size.height)];
     [self.logInView.logo addSubview:logoImage];
+    
+    //UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+    
+    //My Recipe has Nav controller so need to get visible view controller
+    //myRecipeVC = (MyRecipeViewController *) [[[tabController viewControllers] objectAtIndex:0] visibleViewController];
+    myRecipeVC = [[self.tabBarController viewControllers] objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {

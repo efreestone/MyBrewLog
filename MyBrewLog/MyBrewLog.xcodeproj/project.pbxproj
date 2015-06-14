@@ -238,6 +238,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B882F2E21B2D086F00D6FCD5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8B2A7F71AFBE39400100CD3 /* MyRecipeViewController.h */,
+				B8B2A7F81AFBE39400100CD3 /* MyRecipeViewController.m */,
+				B8B2A7FB1AFBE39400100CD3 /* RecipeDetailsViewController.h */,
+				B8B2A7FC1AFBE39400100CD3 /* RecipeDetailsViewController.m */,
+				B8B2A7A31AFBE36F00100CD3 /* BrowseViewController.h */,
+				B8B2A7A41AFBE36F00100CD3 /* BrowseViewController.m */,
+				B8B2A7A11AFBE36F00100CD3 /* BrowseDetailsViewController.h */,
+				B8B2A7A21AFBE36F00100CD3 /* BrowseDetailsViewController.m */,
+				B8B2A8041AFBE39400100CD3 /* TimersViewController.h */,
+				B8B2A8051AFBE39400100CD3 /* TimersViewController.m */,
+				B8B2A8021AFBE39400100CD3 /* SettingsViewController.h */,
+				B8B2A8031AFBE39400100CD3 /* SettingsViewController.m */,
+				B8B2A7F91AFBE39400100CD3 /* NewRecipeViewController.h */,
+				B8B2A7FA1AFBE39400100CD3 /* NewRecipeViewController.m */,
+				B8B2A7AB1AFBE36F00100CD3 /* CustomTableViewCell.h */,
+				B8B2A7AC1AFBE36F00100CD3 /* CustomTableViewCell.m */,
+				B8B2A7F41AFBE38600100CD3 /* LogViewController.h */,
+				B8B2A7F51AFBE38600100CD3 /* LogViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B882F2E31B2D08AD00D6FCD5 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B8B2A7541AFBE26000100CD3 /* AppDelegate.h */,
+				B8B2A7551AFBE26000100CD3 /* AppDelegate.m */,
+				B8B2A7AF1AFBE36F00100CD3 /* EventManager.h */,
+				B8B2A7B01AFBE36F00100CD3 /* EventManager.m */,
+				B8B2A7A91AFBE36F00100CD3 /* CustomQuantityPickerDelegate.h */,
+				B8B2A7AA1AFBE36F00100CD3 /* CustomQuantityPickerDelegate.m */,
+				B8B2A7AD1AFBE36F00100CD3 /* CustomTimerPickerDelegate.h */,
+				B8B2A7AE1AFBE36F00100CD3 /* CustomTimerPickerDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		B882F2E41B2D090B00D6FCD5 /* PFLogin & Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				B8B2A7A51AFBE36F00100CD3 /* CustomPFLoginViewController.h */,
+				B8B2A7A61AFBE36F00100CD3 /* CustomPFLoginViewController.m */,
+				B8B2A7A71AFBE36F00100CD3 /* CustomPFSignUpViewController.h */,
+				B8B2A7A81AFBE36F00100CD3 /* CustomPFSignUpViewController.m */,
+			);
+			name = "PFLogin & Sign Up";
+			sourceTree = "<group>";
+		};
 		B8B2A7441AFBE25F00100CD3 = {
 			isa = PBXGroup;
 			children = (
@@ -263,39 +314,12 @@
 				B8B2A7791AFBE35C00100CD3 /* ActionSheetPicker-3.0-master */,
 				B8B2A7FD1AFBE39400100CD3 /* resources */,
 				B8B2A7B71AFBE36F00100CD3 /* images */,
-				B8B2A7541AFBE26000100CD3 /* AppDelegate.h */,
-				B8B2A7551AFBE26000100CD3 /* AppDelegate.m */,
-				B8B2A7F71AFBE39400100CD3 /* MyRecipeViewController.h */,
-				B8B2A7F81AFBE39400100CD3 /* MyRecipeViewController.m */,
-				B8B2A7FB1AFBE39400100CD3 /* RecipeDetailsViewController.h */,
-				B8B2A7FC1AFBE39400100CD3 /* RecipeDetailsViewController.m */,
-				B8B2A7A31AFBE36F00100CD3 /* BrowseViewController.h */,
-				B8B2A7A41AFBE36F00100CD3 /* BrowseViewController.m */,
-				B8B2A7A11AFBE36F00100CD3 /* BrowseDetailsViewController.h */,
-				B8B2A7A21AFBE36F00100CD3 /* BrowseDetailsViewController.m */,
-				B8B2A8041AFBE39400100CD3 /* TimersViewController.h */,
-				B8B2A8051AFBE39400100CD3 /* TimersViewController.m */,
-				B8B2A8021AFBE39400100CD3 /* SettingsViewController.h */,
-				B8B2A8031AFBE39400100CD3 /* SettingsViewController.m */,
-				B8B2A7F91AFBE39400100CD3 /* NewRecipeViewController.h */,
-				B8B2A7FA1AFBE39400100CD3 /* NewRecipeViewController.m */,
+				B882F2E31B2D08AD00D6FCD5 /* Delegates */,
+				B882F2E21B2D086F00D6FCD5 /* View Controllers */,
 				B8B2A75D1AFBE26000100CD3 /* Main.storyboard */,
 				B8B2A7601AFBE26000100CD3 /* Images.xcassets */,
 				B8B2A7621AFBE26000100CD3 /* LaunchScreen.xib */,
-				B8B2A7AB1AFBE36F00100CD3 /* CustomTableViewCell.h */,
-				B8B2A7AC1AFBE36F00100CD3 /* CustomTableViewCell.m */,
-				B8B2A7A91AFBE36F00100CD3 /* CustomQuantityPickerDelegate.h */,
-				B8B2A7AA1AFBE36F00100CD3 /* CustomQuantityPickerDelegate.m */,
-				B8B2A7AD1AFBE36F00100CD3 /* CustomTimerPickerDelegate.h */,
-				B8B2A7AE1AFBE36F00100CD3 /* CustomTimerPickerDelegate.m */,
-				B8B2A7A51AFBE36F00100CD3 /* CustomPFLoginViewController.h */,
-				B8B2A7A61AFBE36F00100CD3 /* CustomPFLoginViewController.m */,
-				B8B2A7A71AFBE36F00100CD3 /* CustomPFSignUpViewController.h */,
-				B8B2A7A81AFBE36F00100CD3 /* CustomPFSignUpViewController.m */,
-				B8B2A7AF1AFBE36F00100CD3 /* EventManager.h */,
-				B8B2A7B01AFBE36F00100CD3 /* EventManager.m */,
-				B8B2A7F41AFBE38600100CD3 /* LogViewController.h */,
-				B8B2A7F51AFBE38600100CD3 /* LogViewController.m */,
+				B882F2E41B2D090B00D6FCD5 /* PFLogin & Sign Up */,
 				B8B2A7501AFBE26000100CD3 /* Supporting Files */,
 			);
 			path = MyBrewLog;

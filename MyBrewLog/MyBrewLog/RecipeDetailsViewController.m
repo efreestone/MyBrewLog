@@ -68,7 +68,7 @@
     }
     
     //Get active bool and set switch accordingly
-    isActive = [passedObject valueForKey:@"Active"];
+    isActive = (BOOL)[passedObject valueForKey:@"Active"];
     if (isActive) {
         NSLog(@"is active");
         [activeSwitch setOn:YES];
@@ -78,7 +78,7 @@
     }
     
     //Get private bool and set switch accordingly
-    isPrivate = [passedObject valueForKey:@"Private"];
+    isPrivate = (BOOL)[passedObject valueForKey:@"Private"];
     if (isPrivate) {
         NSLog(@"not public");
         [publicSwitch setOn:NO];

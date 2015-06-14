@@ -119,7 +119,7 @@
     timerVC = (TimersViewController *)[[tabController viewControllers] objectAtIndex:2];
     //My Recipe has Nav controller so need to get visible view controller
     myRecipeVC = (MyRecipeViewController *) [[[tabController viewControllers] objectAtIndex:0] visibleViewController];
-    if (myRecipeVC != nil) {
+    if (myRecipeVC != nil && [PFUser currentUser]) {
         [myRecipeVC checkIngredientsForUpdate];
     }
     

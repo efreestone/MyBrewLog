@@ -159,9 +159,14 @@
         [self.alarmPlayer play];
         NSLog(@"Timer over");
         
+        NSString *formattedDetailsOne = [NSString stringWithFormat:@"Timer One: %@", oneDescription];
+        //Show alert for timer
+        [self showTimerOverAlert:formattedDetailsOne];
+        //Clear user defaults for timer
         [userDefaults removeObjectForKey:@"fireDateOne"];
         [userDefaults removeObjectForKey:@"countdownOne"];
         [userDefaults removeObjectForKey:@"pauseStartOne"];
+        [onePauseButton setTitle:@"Start" forState:UIControlStateNormal];
     }
 }
 
@@ -487,6 +492,13 @@
                                           otherButtonTitles:nil];
     [alert show];
 } //showAlert close
+
+//Method to create and show alert view for timers over
+-(void)showTimerOverAlert:(NSString *)alertMessage {
+    UIAlertView *timerAlert = [[UIAlertView alloc] initWithTitle:@"Timer Over" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    //Show alert
+    [timerAlert show];
+}
 
 /*
 #pragma mark - Navigation

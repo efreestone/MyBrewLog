@@ -289,7 +289,6 @@ typedef enum {
 #pragma mark - PFQueryTableViewController
 
 //Use initWithCoder instead of initWithStyle to use my own stroyboard.
-//This was not working in project 2 because parseClassName wasn't being set properly
 - (id)initWithCoder:(NSCoder *)aCoder {
     self = [super initWithCoder:aCoder];
     if (self) {
@@ -573,6 +572,8 @@ typedef enum {
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    //NSLog(@"myRecipe logInController didLogInUser");
+    [self refreshTable];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
