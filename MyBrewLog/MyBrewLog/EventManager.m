@@ -19,6 +19,8 @@
 -(instancetype)init {
     self = [super init];
     
+    NSLog(@"Event Manager Init");
+    
     accessKey = @"eventsAccessGranted";
     
     if (self) {
