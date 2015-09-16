@@ -95,7 +95,6 @@
     //Returns
     switch (component) {
         case 0:
-//            return 10;
             return [amountHundreds count];
         case 1:
             return [amountTens count];

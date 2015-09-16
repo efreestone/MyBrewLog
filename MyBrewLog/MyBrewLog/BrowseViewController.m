@@ -264,7 +264,7 @@ typedef enum {
     BOOL isFavorite = NO;
     //If browseSearchResults exists, process as search table
     if (self.browseSearchResults.count >= 1) {
-        //NSLog(@"indexpath at search tableview is: %ld", (long)indexPath.row);
+        NSLog(@"indexpath at search tableview is: %ld", (long)indexPath.row);
         object = [self.browseSearchResults objectAtIndex:indexPath.row];
         selectedName = [object objectForKey:@"Name"];
         selectedType = [object objectForKey:@"Type"];
@@ -373,7 +373,15 @@ typedef enum {
     [usernameQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
     [usernameQuery whereKey:@"createdBy" matchesRegex:searTermTwo modifiers:@"i"];
     
-    PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[nameQuery, usernameQuery]];
+    PFQuery *instructionQuery = [PFQuery queryWithClassName: parseClassName];
+    [instructionQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
+    [instructionQuery whereKey:@"Instructions" matchesRegex:searchTerm modifiers:@"i"];
+    
+    PFQuery *ingredientQuery = [PFQuery queryWithClassName: parseClassName];
+    [ingredientQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
+    [ingredientQuery whereKey:@"Ingredients" matchesRegex:searchTerm modifiers:@"i"];
+    
+    PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[nameQuery, usernameQuery, instructionQuery, ingredientQuery]];
     
     //Grab searchbar textfield to apply color and border when no results found
     for (id object in [[[self.browseSearchController.searchBar subviews] objectAtIndex:0] subviews]) {
