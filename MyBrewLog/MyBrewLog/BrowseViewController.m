@@ -363,15 +363,15 @@ typedef enum {
     NSString *searTermTwo = searchTerm;
     
     //Query with search term
-    PFQuery *query = [PFQuery queryWithClassName: parseClassName];
-    [query whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
+//    PFQuery *query = [PFQuery queryWithClassName: parseClassName];
+//    [query whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
     
     PFQuery *nameQuery = [PFQuery queryWithClassName: parseClassName];
     [nameQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
     [nameQuery whereKey:@"Name" matchesRegex:searchTerm modifiers:@"i"];
     PFQuery *usernameQuery = [PFQuery queryWithClassName: parseClassName];
     [usernameQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
-    [usernameQuery whereKey:@"createdBy" matchesRegex:searTermTwo modifiers:@"i"];
+    [usernameQuery whereKey:@"createdBy" matchesRegex:searchTerm modifiers:@"i"];
     
     PFQuery *instructionQuery = [PFQuery queryWithClassName: parseClassName];
     [instructionQuery whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];

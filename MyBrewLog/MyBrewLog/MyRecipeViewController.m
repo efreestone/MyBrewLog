@@ -332,7 +332,7 @@ typedef enum {
     
     //If browseSearchResults exists, populate table with search results
     if (self.recipeSearchResults.count >= 1) {
-        //NSLog(@"Search results controller");
+        NSLog(@"Search results controller");
         //Get object from recipeSearchResults array instead of regular query
         PFObject *searchedObject = [self.recipeSearchResults objectAtIndex:indexPath.row];
         NSString *recipeType = [searchedObject objectForKey:@"Type"];
@@ -628,7 +628,7 @@ typedef enum {
 //Delegate method triggered when search text is entered
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = searchController.searchBar.text;
-    //Make sure somethinf was entered before attempting to filter results
+    //Make sure something was entered before attempting to filter results
     if (![searchString isEqualToString:@""]) {
         [self filterResults:searchString];
     }
@@ -646,11 +646,26 @@ typedef enum {
     }
     
     //Query with search term
-    PFQuery *query = [PFQuery queryWithClassName: parseClassName];
-    [query whereKey:@"createdBy" equalTo:[PFUser currentUser].username];
-    //[query whereKey:@"Name" containsString:searchTerm];
-    //Create case-insensitive query, "i" modifier sets this in regex
-    [query whereKey:@"Name" matchesRegex:searchTerm modifiers:@"i"];
+    PFQuery *nameQuery = [PFQuery queryWithClassName: parseClassName];
+    [nameQuery whereKey:@"createdBy" equalTo:[PFUser currentUser].username];
+    [nameQuery whereKey:@"Name" matchesRegex:searchTerm modifiers:@"i"];
+    
+    PFQuery *instructionQuery = [PFQuery queryWithClassName: parseClassName];
+    [instructionQuery whereKey:@"createdBy" equalTo:[PFUser currentUser].username];
+    [instructionQuery whereKey:@"Instructions" matchesRegex:searchTerm modifiers:@"i"];
+    
+    PFQuery *ingredientQuery = [PFQuery queryWithClassName: parseClassName];
+    [ingredientQuery whereKey:@"createdBy" equalTo:[PFUser currentUser].username];
+    [ingredientQuery whereKey:@"Ingredients" matchesRegex:searchTerm modifiers:@"i"];
+    
+    PFQuery *orQuery = [PFQuery orQueryWithSubqueries:@[nameQuery, instructionQuery, ingredientQuery]];
+    
+//    //Query with search term
+//    PFQuery *query = [PFQuery queryWithClassName: parseClassName];
+//    [query whereKey:@"createdBy" equalTo:[PFUser currentUser].username];
+//    //[query whereKey:@"Name" containsString:searchTerm];
+//    //Create case-insensitive query, "i" modifier sets this in regex
+//    [query whereKey:@"Name" matchesRegex:searchTerm modifiers:@"i"];
     
     //Grab searchbar textfield to apply color and border when no results found
     for (id object in [[[self.recipeSearchController.searchBar subviews] objectAtIndex:0] subviews]) {
@@ -661,7 +676,7 @@ typedef enum {
     }
     
     //Query Parse in background for objects matching the search term
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+    [orQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
             //Change color of serch textfield if no items match search
             if (objects.count == 0) {
