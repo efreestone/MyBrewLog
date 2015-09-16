@@ -29,7 +29,7 @@
     //Set arrays for ingredients
     berriesArray = [NSArray arrayWithObjects:@"Berries 1", @"Berries 2", @"Berries 3", @"Berries 4",  @"Other", nil];
     
-    fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Other", nil];
+    fruitsArray = [NSArray arrayWithObjects:@"Fruit 1", @"Fruit 2", @"Fruit 3", @"Fruit 4", @"Fruit 5", @"Fruit 6", @"Fruit 7", @"Fruit 8", @"Fruit 9", @"Fruit 10", @"Fruit 11", @"Fruit 12", @"Fruit 13", @"Fruit 14", @"Fruit 15", @"Fruit 16", @"Other", nil];
     
     vegetablesArray = [NSArray arrayWithObjects:@"Vegetable 1", @"Vegetable 2", @"Vegetable 3", @"Vegetable 4",  @"Other", nil];
     
