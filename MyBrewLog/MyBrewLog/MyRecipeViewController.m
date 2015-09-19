@@ -48,6 +48,7 @@ typedef enum {
     NSString *selectedInstructions;
     NSString *selectedType;
     NSString *selectedNotes;
+    BOOL selectedIsActive;
     NSString *selectedObjectID;
     PFObject *selectedPFObject;
     NSString *usernameString;
@@ -369,6 +370,14 @@ typedef enum {
             imageName = @"other-icon.png";
         }
         
+        NSString *recipeName = [object objectForKey:@"Name"];
+        
+        //Check if recipe is active, add ** if is
+        BOOL isActive = [[object objectForKey:@"Active"] boolValue];
+        if (isActive) {
+            recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+        }
+        
         //NSDate *updated = [object updatedAt];
         NSDate *updated = [object valueForKey:@"updatedByUser"];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -376,7 +385,7 @@ typedef enum {
         //cell.detailTextLabel.text = [NSString stringWithFormat:@"Lasted Updated: %@", [dateFormat stringFromDate:updated]];
         NSString *createdAtString = [NSString stringWithFormat:@"Created %@",[dateFormat stringFromDate:updated]];
         
-        cell.recipeNameLabel.text = [object objectForKey:@"Name"];
+        cell.recipeNameLabel.text = recipeName;
         cell.detailsLabel.text = createdAtString;
         cell.cellImage.image = [UIImage imageNamed:imageName];
     }

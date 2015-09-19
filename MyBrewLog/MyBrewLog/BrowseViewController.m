@@ -360,8 +360,6 @@ typedef enum {
         self.browseSearchResults = [[NSMutableArray alloc] init];
     }
     
-    NSString *searTermTwo = searchTerm;
-    
     //Query with search term
 //    PFQuery *query = [PFQuery queryWithClassName: parseClassName];
 //    [query whereKey:@"createdBy" notEqualTo:[PFUser currentUser].username];
