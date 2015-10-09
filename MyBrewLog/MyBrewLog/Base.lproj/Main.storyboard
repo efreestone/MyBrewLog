@@ -47,6 +47,9 @@
             <string>Calibri</string>
             <string>Calibri</string>
             <string>Calibri</string>
+            <string>Calibri</string>
+            <string>Calibri</string>
+            <string>Calibri</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -78,7 +81,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lg-z9-8tw">
-                                <rect key="frame" x="163" y="109" width="275" height="170"/>
+                                <rect key="frame" x="163" y="110" width="275" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmW-zG-c4p">
                                         <rect key="frame" x="3" y="54" width="270" height="62"/>
@@ -142,7 +145,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXS-Hg-RwE">
-                                <rect key="frame" x="163" y="289" width="275" height="170"/>
+                                <rect key="frame" x="163" y="290" width="275" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibb-UL-pe1">
                                         <rect key="frame" x="170" y="113" width="85" height="47"/>
@@ -206,8 +209,8 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only two timers can be active at any one time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhS-uN-bwN">
-                                <rect key="frame" x="163" y="64" width="275" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="163" y="64" width="275" height="42"/>
+                                <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -277,7 +280,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKN-UQ-hXC">
-                                            <rect key="frame" x="75" y="5" width="126" height="28"/>
+                                            <rect key="frame" x="75" y="5" width="515" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="fJ9-jT-Ltd"/>
                                             </constraints>
@@ -285,6 +288,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="0.12549020349979401" green="0.12549020349979401" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmp-Lc-XU7">
+                                            <rect key="frame" x="569" y="29" width="26" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="26" id="Amf-Oq-0F7"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="26" id="jbq-YO-ir2"/>
+                                                <constraint firstAttribute="height" constant="26" id="nkf-Ca-Vn7"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="rKw-UU-P2j"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="MaR-Fh-sbs" firstAttribute="leading" secondItem="uk5-7O-ogw" secondAttribute="leadingMargin" constant="2" id="5YU-qy-cn1"/>
@@ -295,9 +307,15 @@
                                         <constraint firstAttribute="bottom" secondItem="bGk-Ej-U5b" secondAttribute="bottom" constant="1" id="uIv-x6-Bld"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tmp-Lc-XU7" secondAttribute="bottom" constant="5" id="OQW-I1-gEe"/>
+                                    <constraint firstAttribute="trailing" secondItem="tmp-Lc-XU7" secondAttribute="trailing" constant="5" id="T7f-ud-7DG"/>
+                                    <constraint firstAttribute="trailing" secondItem="YKN-UQ-hXC" secondAttribute="trailing" constant="10" id="h5E-jQ-pTH"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="cellImage" destination="MaR-Fh-sbs" id="7Z4-Gu-RlG"/>
                                     <outlet property="detailsLabel" destination="bGk-Ej-U5b" id="sPg-Mn-Rix"/>
+                                    <outlet property="modImage" destination="tmp-Lc-XU7" id="gJd-8g-HP3"/>
                                     <outlet property="recipeNameLabel" destination="YKN-UQ-hXC" id="K7K-fz-dF8"/>
                                 </connections>
                             </tableViewCell>
@@ -515,7 +533,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYC-ey-gls">
-                                            <rect key="frame" x="75" y="5" width="126" height="28"/>
+                                            <rect key="frame" x="75" y="5" width="515" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="QbY-v0-94E"/>
                                             </constraints>
@@ -539,6 +557,13 @@
                                                 <constraint firstAttribute="width" constant="55" id="7aA-JM-CRg"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WnM-R7-Jfu">
+                                            <rect key="frame" x="569" y="29" width="26" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="Gna-BD-udl"/>
+                                                <constraint firstAttribute="width" constant="26" id="qHA-tm-uU5"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="qYC-ey-gls" firstAttribute="top" secondItem="IrY-Oz-c2p" secondAttribute="top" constant="5" id="0TK-nj-7qa"/>
@@ -549,9 +574,15 @@
                                         <constraint firstAttribute="centerX" secondItem="s9H-0E-z4o" secondAttribute="centerX" id="ysu-xR-dbi"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qYC-ey-gls" secondAttribute="trailing" constant="10" id="jYB-fS-XK3"/>
+                                    <constraint firstAttribute="bottom" secondItem="WnM-R7-Jfu" secondAttribute="bottom" constant="5" id="mcY-Fn-jLh"/>
+                                    <constraint firstAttribute="trailing" secondItem="WnM-R7-Jfu" secondAttribute="trailing" constant="5" id="zji-Yj-jfe"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="cellImage" destination="LjS-pl-NkI" id="HsK-qV-Bqo"/>
                                     <outlet property="detailsLabel" destination="s9H-0E-z4o" id="yzd-Mh-N7p"/>
+                                    <outlet property="modImage" destination="WnM-R7-Jfu" id="tuK-7s-7bg"/>
                                     <outlet property="recipeNameLabel" destination="qYC-ey-gls" id="tdW-uv-a50"/>
                                 </connections>
                             </tableViewCell>
@@ -674,7 +705,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="0l0-vw-Qu8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pir-jH-SAc">
@@ -687,7 +718,7 @@
                                 <rect key="frame" x="10" y="254" width="580" height="305"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="Txs-R8-Y1A" id="8sM-Lh-QZL"/>

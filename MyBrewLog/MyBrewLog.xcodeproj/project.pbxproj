@@ -15,6 +15,9 @@
 		B86866D41AFC1FFE00C27843 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86866CE1AFC1FFE00C27843 /* ParseCrashReporting.framework */; };
 		B86866D51AFC1FFE00C27843 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86866CF1AFC1FFE00C27843 /* ParseFacebookUtils.framework */; };
 		B86866D61AFC1FFE00C27843 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86866D01AFC1FFE00C27843 /* ParseFacebookUtilsV4.framework */; };
+		B86D3E111BAE278F00444FC8 /* active.png in Resources */ = {isa = PBXBuildFile; fileRef = B86D3E101BAE278F00444FC8 /* active.png */; settings = {ASSET_TAGS = (); }; };
+		B86D3E131BAE279A00444FC8 /* not.png in Resources */ = {isa = PBXBuildFile; fileRef = B86D3E121BAE279A00444FC8 /* not.png */; settings = {ASSET_TAGS = (); }; };
+		B86D3E151BAE348100444FC8 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = B86D3E141BAE348100444FC8 /* favorite.png */; settings = {ASSET_TAGS = (); }; };
 		B8B2A7531AFBE26000100CD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B2A7521AFBE26000100CD3 /* main.m */; };
 		B8B2A7561AFBE26000100CD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B2A7551AFBE26000100CD3 /* AppDelegate.m */; };
 		B8B2A75F1AFBE26000100CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B2A75D1AFBE26000100CD3 /* Main.storyboard */; };
@@ -102,6 +105,9 @@
 		B86866CE1AFC1FFE00C27843 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		B86866CF1AFC1FFE00C27843 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		B86866D01AFC1FFE00C27843 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		B86D3E101BAE278F00444FC8 /* active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = active.png; sourceTree = "<group>"; };
+		B86D3E121BAE279A00444FC8 /* not.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = not.png; sourceTree = "<group>"; };
+		B86D3E141BAE348100444FC8 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		B8B2A74D1AFBE26000100CD3 /* MyBrewLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBrewLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B2A7511AFBE26000100CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B2A7521AFBE26000100CD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -398,10 +404,12 @@
 		B8B2A7B71AFBE36F00100CD3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B86D3E101BAE278F00444FC8 /* active.png */,
 				B8B2A7B81AFBE36F00100CD3 /* barrels.jpg */,
 				B8B2A7B91AFBE36F00100CD3 /* beer-bottle.png */,
 				B8B2A7BA1AFBE36F00100CD3 /* browse-tab.png */,
 				B8B2A7BB1AFBE36F00100CD3 /* browse-tab@2x.png */,
+				B86D3E141BAE348100444FC8 /* favorite.png */,
 				B8B2A7BC1AFBE36F00100CD3 /* Icon-76.png */,
 				B8B2A7BD1AFBE36F00100CD3 /* Icon-76@2x.png */,
 				B8B2A7BE1AFBE36F00100CD3 /* icon.png */,
@@ -409,6 +417,7 @@
 				B8B2A7C01AFBE36F00100CD3 /* my-logo.png */,
 				B8B2A7C11AFBE36F00100CD3 /* my-recipes-tab.png */,
 				B8B2A7C21AFBE36F00100CD3 /* my-recipes-tab@2x.png */,
+				B86D3E121BAE279A00444FC8 /* not.png */,
 				B8B2A7C31AFBE36F00100CD3 /* other-icon.png */,
 				B8B2A7C41AFBE36F00100CD3 /* settings-tab.png */,
 				B8B2A7C51AFBE36F00100CD3 /* settings-tab@2x.png */,
@@ -545,6 +554,7 @@
 				B8B2A7941AFBE35C00100CD3 /* AUTHORS.md in Resources */,
 				B8B2A7931AFBE35C00100CD3 /* ActionSheetPicker-3.0.podspec in Resources */,
 				B8B2A7961AFBE35C00100CD3 /* CONTRIBUTING.md in Resources */,
+				B86D3E131BAE279A00444FC8 /* not.png in Resources */,
 				B8B2A7951AFBE35C00100CD3 /* CHANGELOG.md in Resources */,
 				B8B2A7A01AFBE35C00100CD3 /* README.md in Resources */,
 				B8B2A80B1AFBE39400100CD3 /* Calibri.ttf in Resources */,
@@ -554,6 +564,7 @@
 				B8B2A80A1AFBE39400100CD3 /* Calibri Bold.ttf in Resources */,
 				B8B2A7E11AFBE36F00100CD3 /* my-recipes-tab@2x.png in Resources */,
 				B8B2A8091AFBE39400100CD3 /* bell.mp3 in Resources */,
+				B86D3E151BAE348100444FC8 /* favorite.png in Resources */,
 				B8B2A7D71AFBE36F00100CD3 /* barrels.jpg in Resources */,
 				B8B2A7E71AFBE36F00100CD3 /* timer-tab@2x.png in Resources */,
 				B8B2A75F1AFBE26000100CD3 /* Main.storyboard in Resources */,
@@ -567,6 +578,7 @@
 				B8B2A7DD1AFBE36F00100CD3 /* icon.png in Resources */,
 				B8B2A7DF1AFBE36F00100CD3 /* my-logo.png in Resources */,
 				B8B2A7E01AFBE36F00100CD3 /* my-recipes-tab.png in Resources */,
+				B86D3E111BAE278F00444FC8 /* active.png in Resources */,
 				B8B2A7E51AFBE36F00100CD3 /* splash-logo.png in Resources */,
 				B8B2A7DB1AFBE36F00100CD3 /* Icon-76.png in Resources */,
 				B8B2A7E61AFBE36F00100CD3 /* timer-tab.png in Resources */,

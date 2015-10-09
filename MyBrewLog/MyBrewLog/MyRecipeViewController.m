@@ -337,7 +337,7 @@ typedef enum {
         //Get object from recipeSearchResults array instead of regular query
         PFObject *searchedObject = [self.recipeSearchResults objectAtIndex:indexPath.row];
         NSString *recipeType = [searchedObject objectForKey:@"Type"];
-        NSString *imageName;
+        NSString *imageName, *modImageName;
         //Set the icon based on recipe type. "Other" is the default
         if ([recipeType isEqualToString:@"Beer"]) {
             imageName = @"beer-bottle.png";
@@ -345,6 +345,15 @@ typedef enum {
             imageName = @"wine-glass.png";
         } else {
             imageName = @"other-icon.png";
+        }
+        
+        //Check if recipe is active, add ** if is
+        BOOL isActive = [[object objectForKey:@"Active"] boolValue];
+        if (isActive) {
+            //recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+            modImageName = @"active.png";
+        } else {
+            modImageName = @"not.png";
         }
         
         //Grab date and set on table
@@ -356,11 +365,12 @@ typedef enum {
         cell.recipeNameLabel.text = [searchedObject objectForKey:@"Name"];
         cell.detailsLabel.text = createdAtString;
         cell.cellImage.image = [UIImage imageNamed:imageName];
+        cell.modImage.image = [UIImage imageNamed:modImageName];
     } else {
     //Not search, populate in regular manner
         //NSLog(@"ELSE Search results controller");
         NSString *recipeType = [object objectForKey:@"Type"];
-        NSString *imageName;
+        NSString *imageName, *modImageName;
         //Set the icon based on recipe type. "Other" is the default
         if ([recipeType isEqualToString:@"Beer"]) {
             imageName = @"beer-bottle.png";
@@ -375,7 +385,10 @@ typedef enum {
         //Check if recipe is active, add ** if is
         BOOL isActive = [[object objectForKey:@"Active"] boolValue];
         if (isActive) {
-            recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+            //recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+            modImageName = @"active.png";
+        } else {
+            modImageName = @"not.png";
         }
         
         //NSDate *updated = [object updatedAt];
@@ -388,6 +401,7 @@ typedef enum {
         cell.recipeNameLabel.text = recipeName;
         cell.detailsLabel.text = createdAtString;
         cell.cellImage.image = [UIImage imageNamed:imageName];
+        cell.modImage.image = [UIImage imageNamed:modImageName];
     }
     
     //Override to remove extra seperator lines after the last cell

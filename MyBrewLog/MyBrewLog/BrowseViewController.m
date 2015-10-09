@@ -148,7 +148,7 @@ typedef enum {
         //Get object from browseSearchResults array instead of regular query
         PFObject *searchedObject = [self.browseSearchResults objectAtIndex:indexPath.row];
         NSString *recipeType = [searchedObject objectForKey:@"Type"];
-        NSString *imageName;
+        NSString *imageName, *modImageName;
         //Set the icon based on recipe type. "Other" is the default
         if ([recipeType isEqualToString:@"Beer"]) {
             imageName = @"beer-bottle.png";
@@ -156,6 +156,14 @@ typedef enum {
             imageName = @"wine-glass.png";
         } else {
             imageName = @"other-icon.png";
+        }
+        
+        //Check if recipe is favorite, add star img if is
+        if ([self isFavorite:searchedObject]) {
+            //recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+            modImageName = @"favorite.png";
+        } else {
+            modImageName = @"not.png";
         }
         
         usernameString = [searchedObject objectForKey:@"createdBy"];
@@ -164,11 +172,12 @@ typedef enum {
         browseCell.recipeNameLabel.text = [searchedObject objectForKey:@"Name"];
         browseCell.detailsLabel.text = createdByString;
         browseCell.cellImage.image = [UIImage imageNamed:imageName];
+        browseCell.modImage.image = [UIImage imageNamed:modImageName];
     } else {
     //Not search, populate in regular manner
         //NSLog(@"ELSE Search results controller");
         NSString *recipeType = [object objectForKey:@"Type"];
-        NSString *imageName;
+        NSString *imageName, *modImageName;
         //Set the icon based on recipe type. "Other" is the default
         if ([recipeType isEqualToString:@"Beer"]) {
             imageName = @"beer-bottle.png";
@@ -177,6 +186,15 @@ typedef enum {
         } else {
             imageName = @"other-icon.png";
         }
+        
+        //Check if recipe is favorite, add star img if is
+        if ([self isFavorite:object]) {
+            //recipeName = [NSString stringWithFormat:@"**%@**", recipeName];
+            modImageName = @"favorite.png";
+        } else {
+            modImageName = @"not.png";
+        }
+        
         //Grab username to be displayed beow the recipe
         usernameString = [object objectForKey:@"createdBy"];
         NSString *createdByString = [NSString stringWithFormat:@"By: %@", usernameString];
@@ -184,6 +202,7 @@ typedef enum {
         browseCell.recipeNameLabel.text = [object objectForKey:@"Name"];
         browseCell.detailsLabel.text = createdByString;
         browseCell.cellImage.image = [UIImage imageNamed:imageName];
+        browseCell.modImage.image = [UIImage imageNamed:modImageName];
     }
     
     //Override to remove extra seperator lines after the last cell
@@ -193,6 +212,21 @@ typedef enum {
     
     return browseCell;
 } //cellForRowAtIndexPath close
+
+//Check if recipe is favorite. The favorites attribute is saved as an array of user ids of all users that have set it to favorite. This array must be searched for the users id
+-(BOOL)isFavorite:(PFObject *)parseObject {
+    NSArray *favArray = [parseObject objectForKey:@"favorites"];
+    //Check if object is a favorite
+    if (favArray != nil && favArray.count > 0) {
+        NSString *userID = [PFUser currentUser].objectId;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF LIKE[cd] %@", userID];
+        NSArray *filtered = [favArray filteredArrayUsingPredicate:predicate];
+        if (filtered.count > 0) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 //Override query to set cache policy an change sort
 - (PFQuery *)queryForTable {

@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *cellImage;
 @property (strong, nonatomic) IBOutlet UILabel *recipeNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *modImage;
 
 @end
