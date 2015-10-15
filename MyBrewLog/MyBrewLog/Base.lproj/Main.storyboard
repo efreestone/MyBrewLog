@@ -289,12 +289,12 @@
                                             <color key="highlightedColor" red="0.12549020349979401" green="0.12549020349979401" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmp-Lc-XU7">
-                                            <rect key="frame" x="569" y="29" width="26" height="26"/>
+                                            <rect key="frame" x="566" y="31" width="24" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="26" id="Amf-Oq-0F7"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="26" id="jbq-YO-ir2"/>
-                                                <constraint firstAttribute="height" constant="26" id="nkf-Ca-Vn7"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="rKw-UU-P2j"/>
+                                                <constraint firstAttribute="width" constant="24" id="Amf-Oq-0F7"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="jbq-YO-ir2"/>
+                                                <constraint firstAttribute="height" constant="24" id="nkf-Ca-Vn7"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="rKw-UU-P2j"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -309,7 +309,7 @@
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="tmp-Lc-XU7" secondAttribute="bottom" constant="5" id="OQW-I1-gEe"/>
-                                    <constraint firstAttribute="trailing" secondItem="tmp-Lc-XU7" secondAttribute="trailing" constant="5" id="T7f-ud-7DG"/>
+                                    <constraint firstAttribute="trailing" secondItem="tmp-Lc-XU7" secondAttribute="trailing" constant="10" id="T7f-ud-7DG"/>
                                     <constraint firstAttribute="trailing" secondItem="YKN-UQ-hXC" secondAttribute="trailing" constant="10" id="h5E-jQ-pTH"/>
                                 </constraints>
                                 <connections>
@@ -558,10 +558,12 @@
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WnM-R7-Jfu">
-                                            <rect key="frame" x="569" y="29" width="26" height="26"/>
+                                            <rect key="frame" x="566" y="31" width="24" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="26" id="Gna-BD-udl"/>
-                                                <constraint firstAttribute="width" constant="26" id="qHA-tm-uU5"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Bgn-ay-Oc8"/>
+                                                <constraint firstAttribute="height" constant="24" id="Gna-BD-udl"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="XvC-UR-srT"/>
+                                                <constraint firstAttribute="width" constant="24" id="qHA-tm-uU5"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -577,7 +579,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="qYC-ey-gls" secondAttribute="trailing" constant="10" id="jYB-fS-XK3"/>
                                     <constraint firstAttribute="bottom" secondItem="WnM-R7-Jfu" secondAttribute="bottom" constant="5" id="mcY-Fn-jLh"/>
-                                    <constraint firstAttribute="trailing" secondItem="WnM-R7-Jfu" secondAttribute="trailing" constant="5" id="zji-Yj-jfe"/>
+                                    <constraint firstAttribute="trailing" secondItem="WnM-R7-Jfu" secondAttribute="trailing" constant="10" id="zji-Yj-jfe"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="cellImage" destination="LjS-pl-NkI" id="HsK-qV-Bqo"/>
@@ -1262,6 +1264,6 @@
         <image name="timer-tab.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b29-uT-UxQ"/>
+        <segue reference="Rhg-DK-ehR"/>
     </inferredMetricsTieBreakers>
 </document>
