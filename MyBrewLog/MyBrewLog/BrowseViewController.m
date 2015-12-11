@@ -113,6 +113,8 @@ typedef enum {
         self.textKey = @"text";
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 20;
     }
     return self;
 }
@@ -141,6 +143,10 @@ typedef enum {
     //Set ID for deque of cells
     static NSString *cellID = @"BrowseCell";
     CustomTableViewCell *browseCell = (CustomTableViewCell *) [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (!browseCell) {
+        browseCell = [[CustomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier: cellID];
+    }
     
     //If browseSearchResults exists, populate table with search results
     if (self.browseSearchResults.count >= 1) {
@@ -213,6 +219,21 @@ typedef enum {
     return browseCell;
 } //cellForRowAtIndexPath close
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // Account for the load more cell at the bottom of the tableview if we hit the pagination limit:
+//    if (indexPath.row >= [self.objects count]) {
+//        return [tableView rowHeight];
+//    }
+//    
+//    return [tableView rowHeight];
+//}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [super tableView:tableView cellForNextPageAtIndexPath:indexPath];
+////    cell.textLabel.font = [cell.textLabel.font fontWithSize:PAWPostTableViewCellLabelsFontSize];
+//    return cell;
+//}
+
 //Check if recipe is favorite. The favorites attribute is saved as an array of user ids of all users that have set it to favorite. This array must be searched for the users id
 -(BOOL)isFavorite:(PFObject *)parseObject {
     NSArray *favArray = [parseObject objectForKey:@"favorites"];
@@ -272,28 +293,49 @@ typedef enum {
 
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger count = 0;
+    NSLog(@"Count = %li", (long)count);
     // Return the number of rows in the section.
     if (self.browseSearchResults.count == 0) {
+        count = [self.objects count];
         //Show/hide no recipes view based on count
         if (self.objects.count == 0) {
             noRecipesView.hidden = NO;
         } else {
             noRecipesView.hidden = YES;
+            if (count >= 20) {
+//                NSLog(@"Count greater than or equal to 20");
+                count += 1;
+            }
         }
-        return self.objects.count;
+        NSLog(@"Count = %li", (long)count);
+        return count;
     } else {
+        count = [self.browseSearchResults count];
         //Show/hide no recipes view based on count
         if (self.browseSearchResults.count == 0) {
             noRecipesView.hidden = NO;
         } else {
             noRecipesView.hidden = YES;
+            if (count >= 20) {
+//                NSLog(@"Count greater than or equal to 20");
+                count += 1;
+            }
         }
-        return self.browseSearchResults.count;
+        NSLog(@"Count = %li", (long)count);
+        return count;
     }
 }
 
 //Fired whenever a tableview cell is selected, including when search active
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ((indexPath.row + 1) > [self.objects count]) {
+        NSLog(@"Load More... was tapped");
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+        return;
+    }
+    
+//    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     PFObject *object;
     BOOL isFavorite = NO;
     //If browseSearchResults exists, process as search table

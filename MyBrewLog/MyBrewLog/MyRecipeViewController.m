@@ -300,6 +300,7 @@ typedef enum {
         self.textKey = @"text";
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
         // The title for this table in the Navigation Controller.
         //self.title = @"My Contacts";
     }

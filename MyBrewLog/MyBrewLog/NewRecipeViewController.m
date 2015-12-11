@@ -147,6 +147,7 @@
 //            }
             recipeNameTF.text = [NSString stringWithFormat:@"%@ by %@", passedName, passedUsername];
             browseCopy = YES;
+            isCopy = YES;
         }
         recipeType = passedType;
         ingredientsTV.text = passedIngredients;
@@ -154,7 +155,7 @@
     } else {
         NSLog(@"Passed Name IS nil");
     }
-    isCopy = NO;
+    //isCopy = NO;
 }
 
 - (void)didReceiveMemoryWarning {
