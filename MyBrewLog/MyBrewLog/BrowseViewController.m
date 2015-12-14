@@ -113,8 +113,8 @@ typedef enum {
         self.textKey = @"text";
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 20;
+        self.paginationEnabled = NO;
+        //self.objectsPerPage = 20;
     }
     return self;
 }
@@ -219,6 +219,16 @@ typedef enum {
     return browseCell;
 } //cellForRowAtIndexPath close
 
+//- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.row == self.objects.count) {
+//        NSLog(@"Index path = self.objects");
+//        return nil;
+//    } else {
+//        //NSLog(@"Index path != self.objects");
+//        return [super objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
+//    }
+//}
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    // Account for the load more cell at the bottom of the tableview if we hit the pagination limit:
 //    if (indexPath.row >= [self.objects count]) {
@@ -294,22 +304,23 @@ typedef enum {
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger count = 0;
-    NSLog(@"Count = %li", (long)count);
+    //NSLog(@"Count = %li", (long)count);
     // Return the number of rows in the section.
     if (self.browseSearchResults.count == 0) {
-        count = [self.objects count];
+        NSInteger myCount = [self.objects count];
         //Show/hide no recipes view based on count
         if (self.objects.count == 0) {
             noRecipesView.hidden = NO;
         } else {
             noRecipesView.hidden = YES;
-            if (count >= 20) {
+//            if (myCount % 20 == 0) {
 //                NSLog(@"Count greater than or equal to 20");
-                count += 1;
-            }
+//                myCount += 1;
+//            }
         }
-        NSLog(@"Count = %li", (long)count);
-        return count;
+        NSLog(@"Count = %li", (long)myCount);
+        [super tableView:tableView numberOfRowsInSection:myCount];
+        return myCount;
     } else {
         count = [self.browseSearchResults count];
         //Show/hide no recipes view based on count
@@ -317,12 +328,16 @@ typedef enum {
             noRecipesView.hidden = NO;
         } else {
             noRecipesView.hidden = YES;
-            if (count >= 20) {
-//                NSLog(@"Count greater than or equal to 20");
-                count += 1;
-            }
+//            if (count > 20 || count % 20 == 0) {
+//                NSLog(@"Search Count divisible by 20");
+//                //count += 1;
+//            } else {
+//                NSLog(@"Search Count NOT divisible by 20");
+//            }
+//            self.objectsPerPage = self.browseSearchResults.count;
         }
-        NSLog(@"Count = %li", (long)count);
+        NSLog(@"Search Count = %li", (long)count);
+        //[super tableView:tableView numberOfRowsInSection:count];
         return count;
     }
 }
@@ -331,6 +346,7 @@ typedef enum {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ((indexPath.row + 1) > [self.objects count]) {
         NSLog(@"Load More... was tapped");
+//        [self loadNextPage];
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
         return;
     }
@@ -485,6 +501,7 @@ typedef enum {
         } else {
             NSLog(@"search query error");
         }
+        NSLog(@"Search array after query = %lu", (unsigned long)self.browseSearchResults.count);
     }];
 }
 
